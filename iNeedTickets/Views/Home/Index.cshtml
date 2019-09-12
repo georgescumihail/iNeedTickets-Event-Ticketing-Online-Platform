@@ -1,0 +1,22 @@
+﻿@model IEnumerable<iNeedTickets.Models.Event>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="">
+
+    <h2>Latest events added:</h2>
+
+    @foreach(var e in Model)
+    {
+        <div class="border text-center m-2" style="display:inline-block; width:250px; height:420px;">
+             <img src="https://picsum.photos/250/300" alt="Event image" width:250px; height:300px/>
+             <h6 style="margin-top:10px;">@e.name</h6>
+             <p style="color:lightslategray">@e.location</p>
+             <p style="font-style:italic; float:right; margin-right:20px;">@e.price</p>
+        </div>
+    }
+
+
+</div>
