@@ -1,0 +1,36 @@
+﻿@model iNeedTickets.Models.Event
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<html>
+
+<head>
+    <link href="~/css/event.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+    <div class="event-page">
+
+        <div class="event-wrapper">
+
+            <div class="image-wrapper">
+                <img class="event-banner" src="~/img/@Model.photoLink" alt="Event banner" />
+            </div>
+            <div class="details-wrapper">
+                <h2>@Model.name</h2>
+                <p>Date: @Model.date.ToString("dd/mm/yyyy")</p>
+                <p>Location: @Model.location</p>
+                <p>Ticket price: @Model.price</p>
+            </div>
+            <div class="description-wrapper">
+                <p>@Model.description</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

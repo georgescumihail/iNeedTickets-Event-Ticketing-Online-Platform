@@ -1,0 +1,34 @@
+﻿
+
+.event-wrapper {
+
+    display:inline-block;
+    width: 320px;
+    height: 300px;
+    margin-top: 0;
+}
+
+.event-title {
+
+    text-decoration:none;
+}
+
+.event-banner {
+
+    width: 100%;
+    height: 70%;
+}
+
+.event-date {
+
+    margin: 0;
+    font-size: 15px;
+
+}
+
+.event-location {
+
+    margin: 0;
+    position: relative;
+    top: 8px;
+}

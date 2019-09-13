@@ -4,19 +4,37 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="">
+<html>
 
-    <h2>Latest events added:</h2>
+<head>
+    <link href="~/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/index.css" rel="stylesheet" type="text/css" />
+</head>
 
-    @foreach(var e in Model)
-    {
-        <div class="border text-center m-2" style="display:inline-block; width:250px; height:420px;">
-             <img src="https://picsum.photos/250/300" alt="Event image" width:250px; height:300px/>
-             <h6 style="margin-top:10px;">@e.name</h6>
-             <p style="color:lightslategray">@e.location</p>
-             <p style="font-style:italic; float:right; margin-right:20px;">@e.price</p>
+<body>
+
+    <div id="main-page">
+
+        <div id="upcoming-area">
+
+            <h2>Upcoming events:</h2>
+
+            <div id="upcoming-events">
+
+                 @foreach (var e in Model) {
+
+                <div class="event-wrapper border text-center m-2">
+
+                    <a href="/events/event/@e.id"><img class="event-banner mb-1" src="~/img/@e.photoLink" alt="Event banner" /></a>
+                    <a class="event-title" href="/events/event/@e.id">@e.name</a>
+                    <p class="event-date">@e.date.ToString("dd/mm/yyyy")</p>
+                    <p class="event-location float-right mr-3">@e.location</p>
+
+                </div>
+                 }
+            </div>
         </div>
-    }
+    </div>
+</body>
 
-
-</div>
+</html>

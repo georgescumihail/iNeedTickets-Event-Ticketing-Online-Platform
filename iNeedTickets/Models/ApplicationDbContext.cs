@@ -10,6 +10,11 @@ namespace iNeedTickets.Models
     {
         public DbSet<Event> events { get; set; }
 
+        public ApplicationDbContext()
+        {
+
+        }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
