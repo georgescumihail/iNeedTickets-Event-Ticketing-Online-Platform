@@ -19,7 +19,6 @@ namespace iNeedTickets.Controllers
 
         public IActionResult Index()
         {
-
             return View(repository.events.ToList());
         }
 

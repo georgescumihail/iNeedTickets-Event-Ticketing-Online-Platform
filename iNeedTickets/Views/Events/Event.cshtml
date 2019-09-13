@@ -14,22 +14,28 @@
 
     <div class="event-page">
 
-        <div class="event-wrapper">
-
+        <div class="top-wrapper">
             <div class="image-wrapper">
                 <img class="event-banner" src="~/img/@Model.photoLink" alt="Event banner" />
             </div>
             <div class="details-wrapper">
-                <h2>@Model.name</h2>
-                <p>Date: @Model.date.ToString("dd/mm/yyyy")</p>
-                <p>Location: @Model.location</p>
-                <p>Ticket price: @Model.price</p>
+                <h4 class="ml-3">@Model.name</h4>
+                <div class="details-section m-2 p-2 mt-4 border-top border-bottom">
+                    <p>Date: @Model.date.ToString("dd'/'MM'/'yyyy")</p>
+                    <p>Location: @Model.location</p>
+                    <p>Ticket price: @Model.price</p>
+                </div>
+
+                <div class="buy-section p-2">
+                    <input class="btn btn-primary ml-3" type="button" value="Buy" />
+                </div>
             </div>
+        </div>
+        <div class="bottom-event-wrapper border-top">
             <div class="description-wrapper">
                 <p>@Model.description</p>
             </div>
         </div>
-
     </div>
 
 </body>

@@ -17,17 +17,17 @@
 
         <div id="upcoming-area">
 
-            <h2>Upcoming events:</h2>
+            <h4 class="main-text">Upcoming events:</h4>
 
-            <div id="upcoming-events">
+            <div id="upcoming-events" class="border-top border-bottom">
 
                  @foreach (var e in Model) {
 
-                <div class="event-wrapper border text-center m-2">
+                <div class="event-wrapper border text-center mx-2 my-3">
 
                     <a href="/events/event/@e.id"><img class="event-banner mb-1" src="~/img/@e.photoLink" alt="Event banner" /></a>
                     <a class="event-title" href="/events/event/@e.id">@e.name</a>
-                    <p class="event-date">@e.date.ToString("dd/mm/yyyy")</p>
+                    <p class="event-date">@e.date.ToString("dd'/'MM'/'yyyy")</p>
                     <p class="event-location float-right mr-3">@e.location</p>
 
                 </div>
