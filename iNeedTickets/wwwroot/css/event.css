@@ -12,7 +12,6 @@
     height: auto;
     display: inline-block;
     vertical-align: top;
-    
 }
 
 .details-wrapper {
@@ -48,6 +47,39 @@
     margin-top: 20px;
 }
 
+#type-picker {
+
+    margin: 10px 0px 20px 10px;
+    padding: 5px;
+    display: block;
+}
+
+#number-picker {
+
+    margin: 0px 0px 15px 20px;
+    padding: 5px;
+}
+
+#ticket-nr-label {
+
+    margin-left: 15px;
+}
+
+.buy-button {
+
+    display: block;
+    margin-left: 20px;
+    width: 80px;
+}
+
+#total-price {
+
+    display: inline-block;
+    margin: 15px;
+}
+
+
+
 @media screen and (max-width: 720px) {
 
     .details-wrapper {
@@ -62,4 +94,6 @@
         width: 480px;
         height: 320px;
     }
+
+    /*for mobile only*/ 
 }

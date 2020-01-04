@@ -7,8 +7,7 @@
 <html>
 
 <head>
-    <link href="~/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="~/css/index.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/home.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -25,10 +24,10 @@
 
                 <div class="event-wrapper border text-center mx-2 my-3">
 
-                    <a href="/events/event/@e.id"><img class="event-banner mb-1" src="~/img/@e.photoLink" alt="Event banner" /></a>
-                    <a class="event-title" href="/events/event/@e.id">@e.name</a>
-                    <p class="event-date">@e.date.ToString("dd'/'MM'/'yyyy")</p>
-                    <p class="event-location float-right mr-3">@e.location</p>
+                    <a href="/events/event/@e.Id"><img class="event-banner mb-1" src="~/img/@e.PhotoLink" alt="Event banner" /></a>
+                    <a class="event-title" href="/events/event/@e.Id">@e.Name</a>
+                    <p class="event-date">@e.Date.ToString("dd'/'MM'/'yyyy")</p>
+                    <p class="event-location float-right mr-3">@e.Location</p>
 
                 </div>
                  }

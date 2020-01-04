@@ -64,3 +64,4 @@ C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcorea
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\iNeedTickets.csproj.CopyComplete
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Events\Event.g.cshtml.cs
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Events\EventNotFound.g.cshtml.cs
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Search\Index.g.cshtml.cs

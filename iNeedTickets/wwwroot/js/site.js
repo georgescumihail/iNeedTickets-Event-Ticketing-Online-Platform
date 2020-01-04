@@ -1,4 +1,9 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿var searchBox = document.getElementById("search-box");
 
-// Write your JavaScript code.
+searchBox.addEventListener("focus", () => {
+    searchBox.style.width = "370px";
+});
+
+searchBox.addEventListener("blur", () => {
+    searchBox.style.width = "270px";
+});

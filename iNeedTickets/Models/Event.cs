@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace iNeedTickets.Models
 {
     public class Event
     {
+        public int Id { get; set; }
 
-        public int id { get; set; }
-        public string name { get; set; }
-        public string location { get; set; }
-        public DateTime date { get; set; }
-        public string description { get; set; }
-        public float price { get; set; }
-        public string category { get; set; }
-        public string photoLink { get; set; }
+        public string Name { get; set; }
+
+        public string Location { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public string Description { get; set; }
+
+        public string Category { get; set; }
+
+        public string PhotoLink { get; set; }
+
+        public virtual ICollection<TicketType> TicketTypes { get; set; }
     }
 }

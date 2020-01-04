@@ -1,0 +1,34 @@
+﻿@model IEnumerable<iNeedTickets.Models.Event>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<html>
+
+<head>
+    <link href="~/css/search.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="search-wrapper">
+        <h4 class="main-text border-bottom pb-3">Search results:</h4>
+        <div class="search-results-area">
+            @foreach (var e in Model)
+            {
+            <div class="search-event border-bottom">
+                <div class="photo-wrapper">
+                    <a href="/events/event/@e.Id"><img class="event-photo" src="~/img/@e.PhotoLink" alt="Event photo" /></a>
+                </div>
+                <div class="event-details">
+                    <a class="event-title" href="/events/event/@e.Id">@e.Name</a>
+                    <div class="event-desc">@e.Description</div>
+                    <div class="event-date">@e.Date.ToString("dd'/'MM'/'yyyy")</div>
+                    <div class="event-location">@e.Location</div>
+                </div>
+
+            </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

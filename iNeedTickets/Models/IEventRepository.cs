@@ -7,6 +7,6 @@ namespace iNeedTickets.Models
 {
     public interface IEventRepository
     {
-        IQueryable<Event> events { get; }
+        IQueryable<Event> Events { get; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,6 @@ namespace iNeedTickets.Models
             dbContext = context;
         }
 
-        public IQueryable<Event> events => dbContext.events;
+        public IQueryable<Event> Events => dbContext.Events.Include(e => e.TicketTypes);
     }
 }

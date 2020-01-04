@@ -1,0 +1,47 @@
+﻿
+.search-wrapper{
+    
+    padding: 10px;
+}
+
+.search-results-area{
+
+    padding: 20px;
+}
+
+.search-event{
+
+    padding: 10px 0px 30px 25px;
+
+}
+
+.event-photo{
+
+    width: 300px;
+    height: auto;
+}
+
+.photo-wrapper {
+    vertical-align: top;
+    display: inline-block;
+}
+
+.event-details {
+    width: 500px;
+    display: inline-block;
+    padding: 10px 10px 10px 30px;
+    vertical-align: top;
+}
+
+.event-desc{
+
+
+}
+
+.event-date {
+
+}
+
+.event-location {
+
+}

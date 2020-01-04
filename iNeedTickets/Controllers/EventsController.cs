@@ -18,7 +18,7 @@ namespace iNeedTickets.Controllers
 
         public IActionResult Event(int id)
         {
-            var selectedEvent = repository.events.FirstOrDefault(e => e.id == id);
+            var selectedEvent = repository.Events.FirstOrDefault(e => e.Id == id);
 
             if (selectedEvent != null)
             {
