@@ -18,7 +18,6 @@ namespace iNeedTickets.Controllers
 
         public IActionResult Index(string query)
         {
-
             var searchResults = repository.Events.Where(e => e.Name.Contains(query));
 
             return View(searchResults.ToList());

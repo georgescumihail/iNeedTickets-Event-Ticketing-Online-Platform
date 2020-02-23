@@ -54,3 +54,50 @@ body {
     height: 60px;
     line-height: 60px; /* Vertically center the text there */
 }
+
+/*My css begins here*/
+
+.categories-bar {
+    display: flex;
+    background-image: linear-gradient(white, #ebeff3 60%, #e2e6ea);
+    width:100%;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 240px;
+}
+
+#search-box {
+    width: 270px;
+    transition: 500ms;
+}
+
+#search-button {
+}
+
+.categories-link {
+
+    vertical-align: middle;
+    margin: 0px 40px;
+    width: inherit;
+    text-align: center;
+    white-space: nowrap;
+    color: #111;
+}
+
+.categories-link:hover {
+
+    color: #666;
+    text-decoration: none;
+}
+
+#search-form {
+    flex-flow: row nowrap;
+}
+
+@media screen and (max-width: 1023px) {
+
+    #search-box {
+        max-width: 150px !important;
+    }
+}

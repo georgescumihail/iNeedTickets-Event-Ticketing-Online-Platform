@@ -20,3 +20,8 @@ numberPicker.addEventListener("change", e => {
 function updatePrice() {
     priceLabel.textContent = selectedPrice * ticketsNo;
 }
+
+document.getElementById("buy-button")
+        .addEventListener("click", () => {
+        alert(`Order placed for a total of ${selectedPrice * ticketsNo}`);
+    });

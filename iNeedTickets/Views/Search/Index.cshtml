@@ -28,6 +28,10 @@
 
             </div>
             }
+            @if (Model.ToList().Count == 0)
+            {
+                <div>The are no results matching your search query</div>
+            }
         </div>
     </div>
 </body>
