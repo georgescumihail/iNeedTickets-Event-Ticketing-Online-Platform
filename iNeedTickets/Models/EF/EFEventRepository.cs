@@ -15,6 +15,6 @@ namespace iNeedTickets.Models
             dbContext = context;
         }
 
-        public IQueryable<Event> Events => dbContext.Events.Include(e => e.TicketTypes);
+        public IQueryable<Event> Events => dbContext.Events.Include(e => e.TicketClasses).Include(e => e.Location);
     }
 }

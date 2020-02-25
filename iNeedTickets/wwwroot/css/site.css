@@ -72,7 +72,8 @@ body {
     transition: 500ms;
 }
 
-#search-button {
+#search-button:disabled {
+    opacity: 0.8;
 }
 
 .categories-link {
@@ -99,5 +100,16 @@ body {
 
     #search-box {
         max-width: 150px !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .categories-bar {
+        padding: 0px 10px;
+    }
+
+    .categories-link {
+        margin: 0px 8px;
     }
 }

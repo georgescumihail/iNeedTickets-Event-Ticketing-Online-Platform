@@ -14,8 +14,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow"
-             >
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow">
             <div class="container">
                 <a style="white-space:nowrap;" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">iNeedTickets</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-content" aria-controls="#collapse-content"
@@ -37,7 +36,7 @@
                     </ul>
                     <form asp-controller="Search" asp-action="Index" class="form-inline mr-auto" id="search-form" method="get">
                         <input type="text" class="form-control" name="query" id="search-box" placeholder="Type a name, location, etc..." />
-                        <input type="submit" class="btn btn-secondary ml-2" id="search-button" value="Search" />
+                        <input type="submit" class="btn btn-secondary ml-2" id="search-button" value="Search" disabled />
                     </form>
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -48,11 +47,11 @@
             </div>
         </nav>
         <div class="categories-bar">
-            <a href="" class="categories-link">Concerts</a>
-            <a href="" class="categories-link">Theatre</a>
-            <a href="" class="categories-link">Sports</a>
-            <a href="" class="categories-link">Stand-up</a>
-            <a href="" class="categories-link">Art</a>
+            <a href="/Categories/Concerts" class="categories-link">Concerts</a>
+            <a href="/Categories/Theatre" class="categories-link">Theatre</a>
+            <a href="/Categories/Sports" class="categories-link">Sports</a>
+            <a href="/Categories/Standup" class="categories-link">Standup</a>
+            <a href="/Categories/Art" class="categories-link">Art</a>
         </div>
     </header>
     <div class="container">

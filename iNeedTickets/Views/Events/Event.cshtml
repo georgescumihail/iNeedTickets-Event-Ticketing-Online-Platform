@@ -22,12 +22,12 @@
                 <h4 class="ml-3">@Model.Name</h4>
                 <div class="details-section m-2 p-2 mt-4 border-top border-bottom">
                     <p>Date: @Model.Date.ToString("dd'/'MM'/'yyyy")</p>
-                    <p>Location: @Model.Location</p>
+                    <p>Location: @Model.Location.Name</p>
                 </div>
 
                 <div class="buy-section p-2">
                     <select id="type-picker">
-                        @foreach(var type in Model.TicketTypes)
+                        @foreach(var type in Model.TicketClasses)
                         {
                         <option value="@type.Price">@type.AreaName - @type.Price RON</option>
                         }
@@ -53,7 +53,9 @@
         </div>
 
     </div>
-
-    <script src="~/js/event-page.js"></script>
+    <script>
+        var locationData = @Html.Raw(Json.Serialize(Model.Location));
+    </script>
+    <script src="~/js/event.js"></script>
 </body>
 </html>

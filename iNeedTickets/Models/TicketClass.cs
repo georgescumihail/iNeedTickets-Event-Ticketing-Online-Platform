@@ -1,9 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
+﻿
 namespace iNeedTickets.Models
 {
-    public class TicketType
+    public class TicketClass
     {
         public int Id { get; set; }
 

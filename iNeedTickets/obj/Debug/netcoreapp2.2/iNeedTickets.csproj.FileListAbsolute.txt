@@ -37,7 +37,6 @@ C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\bin\Debug\netcorea
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\bin\Debug\netcoreapp2.2\iNeedTickets.pdb
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\bin\Debug\netcoreapp2.2\iNeedTickets.Views.dll
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\bin\Debug\netcoreapp2.2\iNeedTickets.Views.pdb
-C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\iNeedTickets.csprojAssemblyReference.cache
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\iNeedTickets.csproj.CoreCompileInputs.cache
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\iNeedTickets.RazorAssemblyInfo.cache
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\iNeedTickets.RazorAssemblyInfo.cs
@@ -65,3 +64,5 @@ C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcorea
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Events\Event.g.cshtml.cs
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Events\EventNotFound.g.cshtml.cs
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Search\Index.g.cshtml.cs
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\iNeedTickets.csprojAssemblyReference.cache
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Categories\CategoryView.g.cshtml.cs

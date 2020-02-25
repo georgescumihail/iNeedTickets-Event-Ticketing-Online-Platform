@@ -24,4 +24,5 @@ function updatePrice() {
 document.getElementById("buy-button")
         .addEventListener("click", () => {
         alert(`Order placed for a total of ${selectedPrice * ticketsNo}`);
-    });
+    }
+);
