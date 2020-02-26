@@ -22,7 +22,7 @@
                 <h4 class="ml-3">@Model.Name</h4>
                 <div class="details-section m-2 p-2 mt-4 border-top border-bottom">
                     <p>Date: @Model.Date.ToString("dd'/'MM'/'yyyy")</p>
-                    <p>Location: @Model.Location.Name</p>
+                    <p>Location: @Model.Location.Name <span id="map-toggle">see on map</span></p> 
                 </div>
 
                 <div class="buy-section p-2">
@@ -51,7 +51,15 @@
                 <p>@Model.Description</p>
             </div>
         </div>
-
+    </div>
+    <div id="map-global-container">
+        <div id="background-shadow"></div>
+        <div id="map-popup">
+            <div id="close-map-button">X</div>
+            <div id="map-container">
+                <div id="event-map"></div>
+            </div>
+        </div>
     </div>
     <script>
         var locationData = @Html.Raw(Json.Serialize(Model.Location));

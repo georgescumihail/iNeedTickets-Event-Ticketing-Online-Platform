@@ -23,7 +23,7 @@
 
 .event-wrapper:hover .event-hover-shadow {
     visibility: visible;
-    opacity: 0.1;
+    opacity: 0.3;
 }
 
 .event-title {
@@ -49,7 +49,7 @@
 
 .event-hover-shadow {
     position: absolute;
-    background-color: black;
+    background-color: #aaa;
     opacity: 0;
     z-index: 20;
     width: 100%;

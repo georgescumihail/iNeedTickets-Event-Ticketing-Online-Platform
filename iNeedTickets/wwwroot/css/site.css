@@ -38,7 +38,7 @@ button.accept-policy {
 -------------------------------------------------- */
 html {
   position: relative;
-  min-height: 100%;
+  min-height: 99.5%;
 }
 
 body {
@@ -64,7 +64,7 @@ body {
     height: 40px;
     justify-content: center;
     align-items: center;
-    padding: 0px 240px;
+    padding: 0 240px;
 }
 
 #search-box {
@@ -79,7 +79,7 @@ body {
 .categories-link {
 
     vertical-align: middle;
-    margin: 0px 40px;
+    margin: 0 40px;
     width: inherit;
     text-align: center;
     white-space: nowrap;
@@ -106,10 +106,10 @@ body {
 @media screen and (max-width: 767px) {
 
     .categories-bar {
-        padding: 0px 10px;
+        padding: 0 10px;
     }
 
     .categories-link {
-        margin: 0px 8px;
+        margin: 0 8px;
     }
 }

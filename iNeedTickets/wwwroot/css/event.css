@@ -1,13 +1,11 @@
 ﻿
 .top-wrapper {
-
     height: auto;
     width: 100%;
     margin: 30px;
 }
 
 .image-wrapper {
-
     width: auto;
     height: auto;
     display: inline-block;
@@ -15,7 +13,6 @@
 }
 
 .details-wrapper {
-
     width: auto;
     height: inherit;
     display: inline-block;
@@ -25,72 +22,128 @@
 }
 
 .description-wrapper {
-
     margin: 20px;
     margin-left: 40px;
     display: block;
 }
 
 .event-banner {
-
     width: 600px;
     height: 400px;
 }
 
 .details-section p {
-
     margin: 10px;
 }
 
 .bottom-event-wrapper {
-
     margin-top: 20px;
 }
 
 #type-picker {
-
-    margin: 10px 0px 20px 10px;
+    margin: 10px 0 20px 10px;
     padding: 5px;
     display: block;
     border-radius: 3px;
 }
 
 #number-picker {
-
-    margin: 0px 0px 15px 20px;
+    margin: 0 0 15px 20px;
     padding: 5px;
     border-radius: 3px;
 }
 
 #ticket-nr-label {
-
     margin-left: 15px;
 }
 
 #buy-button {
-
     display: block;
     margin-left: 20px;
     width: 80px;
 }
 
 #total-price {
-
     display: inline-block;
     margin: 15px;
 }
 
+#map-toggle {
+    color: #2FA4E7;
+    font-size: 14px;
+    text-decoration: underline;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#map-global-container {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 30;
+    top: 0;
+    left: 0;
+}
+
+#background-shadow {
+    background-color: #555;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+}
+
+#map-popup {
+    background-color: #fff;
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+    z-index: 101;
+    top: 20%;
+    left: 0;
+    right: 0;
+}
+
+#close-map-button {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    z-index: 500;
+    opacity: 0.8;
+    border-radius: 5px;
+    top: 0px;
+    right: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+#map-container {
+    height: 95%;
+    width: 96%;
+}
+
+#event-map {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
 
 
-@media screen and (max-width: 768px) {
-
+@media screen and (max-width: 767px) {
     .details-wrapper {
-
         margin-top: 30px;
-        margin-left: 0px;
+        margin-left: 0;
         display: block;
     }
-
     .event-banner {
 
         width: 480px;

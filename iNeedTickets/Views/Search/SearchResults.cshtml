@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<iNeedTickets.Models.Event>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "SearchResults";
 }
 
 <html>
@@ -15,7 +15,7 @@
         <div class="search-results-area">
             @foreach (var e in Model)
             {
-            <div class="search-event border-bottom">
+            <div class="search-event">
                 <div class="photo-wrapper">
                     <a href="/events/event/@e.Id"><img class="event-photo" src="~/img/@e.PhotoLink" alt="Event photo" /></a>
                 </div>
