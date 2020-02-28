@@ -20,7 +20,7 @@
     min-height: 500px;
 }
 
-#contact-details{
+#contact-details {
     width: 300px;
     margin-top: 40px;
     margin-left: 15px;
@@ -31,7 +31,7 @@
     margin-top: 10px;
 }
 
-#contact-map{
+#contact-map {
     margin-top: 25px;
     width: 480px;
     height: 360px;
@@ -40,8 +40,8 @@
 @media screen and (max-width: 767px) {
 
     #contact-details {
-        margin-top: 0px;
-        margin-left: 0px;
+        margin-top: 0;
+        margin-left: 0;
     }
 
     #contact-map {

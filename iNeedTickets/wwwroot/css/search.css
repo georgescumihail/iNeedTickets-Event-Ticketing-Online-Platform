@@ -1,21 +1,21 @@
 ﻿
-.search-wrapper{
+.search-wrapper {
     
     padding: 10px;
 }
 
-.search-results-area{
+.search-results-area {
 
     padding: 20px;
 }
 
-.search-event{
+.search-event {
 
     padding: 10px 0px 30px 25px;
 
 }
 
-.event-photo{
+.event-photo {
 
     width: 300px;
     height: auto;
@@ -31,17 +31,4 @@
     display: inline-block;
     padding: 10px 10px 10px 30px;
     vertical-align: top;
-}
-
-.event-desc{
-
-
-}
-
-.event-date {
-
-}
-
-.event-location {
-
 }

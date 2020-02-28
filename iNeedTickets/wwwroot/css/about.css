@@ -1,9 +1,9 @@
 ﻿
-#about-page{
+#about-page {
     padding: 15px;
 }
 
-#about-header{
+#about-header {
     width: 100%;
     margin-bottom: 20px;
 }
@@ -13,12 +13,12 @@
     margin-left: 30px;
 }
 
-#about-body{
+#about-body {
     padding: 10px;
     min-height: 400px;
 }
 
-.about-description{
+.about-description {
     margin-left: 10px;
     margin-top: 10px;
 }

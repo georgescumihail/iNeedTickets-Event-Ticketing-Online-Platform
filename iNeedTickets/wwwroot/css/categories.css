@@ -1,1 +1,10 @@
 ﻿
+#categories-page {
+    padding: 15px;
+}
+
+#categories-header {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}

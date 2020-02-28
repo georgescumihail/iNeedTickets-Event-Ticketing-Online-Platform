@@ -55,7 +55,7 @@ body {
     line-height: 60px; /* Vertically center the text there */
 }
 
-/*My css begins here*/
+/* My css begins here */
 
 .categories-bar {
     display: flex;
@@ -95,6 +95,56 @@ body {
 #search-form {
     flex-flow: row nowrap;
 }
+
+
+/* Event boxes styles */
+
+.event-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 225px;
+    height: 250px;
+    margin-top: 0;
+}
+
+.event-wrapper:hover .event-hover-shadow {
+    visibility: visible;
+    opacity: 0.2;
+}
+
+.event-title {
+    text-decoration: none;
+}
+
+.event-banner {
+    width: 100%;
+    height: 66%;
+}
+
+.event-date {
+    margin: 0;
+    font-size: 15px;
+}
+
+.event-location {
+    margin: 0;
+    position: relative;
+    top: 8px;
+    font-size: 14px;
+}
+
+.event-hover-shadow {
+    position: absolute;
+    background-color: #555;
+    opacity: 0;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+/* Mobile styles */
 
 @media screen and (max-width: 1023px) {
 
