@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using iNeedTickets.Models;
+﻿using iNeedTickets.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace iNeedTickets.Controllers
 {
     public class EventsController : Controller
     {
-        private IEventRepository repository;
+        private IEventRepository _eventsRepository;
 
         public EventsController(IEventRepository repo)
         {
-            repository = repo;
+            _eventsRepository = repo;
         }
 
         public IActionResult Event(int id)
         {
-            var selectedEvent = repository.Events.FirstOrDefault(e => e.Id == id);
+            var selectedEvent = _eventsRepository.GetEventById(id);
 
             if (selectedEvent != null)
             {

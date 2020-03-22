@@ -14,9 +14,9 @@
 
     <div id="categories-page">
 
-        <h4 id="categories-header">@ViewContext.RouteData.Values["action"]</h4>
+        <h4 id="categories-header">@ViewData["CategoryName"]</h4>
 
-        <div id="upcoming-events" class="border-top">
+        <div id="events-container" class="border-top">
 
             @foreach (var e in Model)
             {

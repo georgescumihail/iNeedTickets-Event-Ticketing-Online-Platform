@@ -7,6 +7,14 @@ namespace iNeedTickets.Models
 {
     public interface IEventRepository
     {
-        IQueryable<Event> Events { get; }
+        IQueryable<Event> GetAllUpcomingEvents();
+
+        Event GetEventById(int id);
+
+        IQueryable<Event> GetEventsByQuery(string query);
+
+        IQueryable<Event> GetEventsByType(EventType eventType, int selectionSize = 8);
+
+        IQueryable<Event> GetClosestUpcomingEvents(int selectionSize);
     }
 }

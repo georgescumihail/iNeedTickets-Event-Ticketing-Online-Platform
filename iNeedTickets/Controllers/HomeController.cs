@@ -10,16 +10,23 @@ namespace iNeedTickets.Controllers
 {
     public class HomeController : Controller
     {
-        private IEventRepository repository;
+        private IEventRepository _eventsRepository;
+        private const int UPCOMING_SIZE = 8;
 
         public HomeController(IEventRepository repo)
         {
-            repository = repo;
+            _eventsRepository = repo;
         }
 
         public IActionResult Index()
         {
-            return View(repository.Events.ToList());
+            return View(new MainPageModel
+            {
+                UpcomingEvents = _eventsRepository.GetClosestUpcomingEvents(UPCOMING_SIZE).ToList(),
+                ConcertEvents = _eventsRepository.GetEventsByType(EventType.Concerts).ToList(),
+                TheatreEvents = _eventsRepository.GetEventsByType(EventType.Theatre).ToList(),
+                RecommendedEvents = _eventsRepository.GetClosestUpcomingEvents(4).ToList() // to be implemented
+            });
         }
 
         public IActionResult Contact()

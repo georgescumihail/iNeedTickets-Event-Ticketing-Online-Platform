@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+    <head>
+        <link href="~/css/login.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="login-container">
+            <h4 class="login-title">Sign In</h4>
+            <p class="login-text">
+                Thank you for using iNeedTickets. If you don't have an account, you can create one
+                <a id="signup-link" href="/account/create">here</a>
+            </p>
+            <div class="login-row">
+                <label class="form-label">Email:</label>
+                <input id="email-field" class="form-input form-control" type="text" />
+            </div>
+            <div class="login-row">
+                <label class="form-label">Password:</label>
+                <input id="password-field" class="form-input form-control" type="password" />
+            </div>
+            <div class="login-row">
+                <button id="login-button" class="btn btn-primary">Sign In</button>
+            </div>
+            <div class="login-row">
+                <div id="error-message"></div>
+            </div>
+        </div>
+        <script src="~/js/login.js"></script>
+    </body>
+</html>

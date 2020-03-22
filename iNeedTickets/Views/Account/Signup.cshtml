@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Signup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+    <head>
+        <link href="~/css/login.css" rel="stylesheet" type="text/css" />
+        <link href="~/css/signup.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="login-container">
+            <h4 class="login-title">Sign Up</h4>
+            <p class="login-text">Welcome! Please fill in all the required details in order to register your new account:</p>
+
+            <div id="form-container">
+                <label class="form-label">Enter your email:</label>
+                <input id="email-field" class="form-input form-control" type="text" />
+
+                <label class="form-label">Choose a username:</label>
+                <input id="username-field" class="form-input form-control" type="text" />
+
+                <label class="form-label">Choose a password:</label>
+                <input id="password-field" class="form-input form-control" type="password" />
+
+                <label class="form-label">Repeat the password:</label>
+                <input id="repeat-field" class="form-input form-control" type="password" />
+
+                <button id="signup-button" class="btn btn-secondary">Register</button>
+
+                <div id="error-message"></div>
+            </div>
+
+        </div>
+        <script src="~/js/signup.js"></script>
+    </body>
+</html>

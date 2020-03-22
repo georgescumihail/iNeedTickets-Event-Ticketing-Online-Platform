@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using iNeedTickets.Models;
 
 namespace iNeedTickets.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200321224958_AddedIdentity")]
+    partial class AddedIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -196,13 +198,11 @@ namespace iNeedTickets.Migrations
 
                     b.Property<string>("AreaName");
 
+                    b.Property<int>("Capacity");
+
                     b.Property<int?>("EventRefId");
 
                     b.Property<float>("Price");
-
-                    b.Property<int>("TicketsCapacity");
-
-                    b.Property<int>("TicketsRemaining");
 
                     b.HasKey("Id");
 

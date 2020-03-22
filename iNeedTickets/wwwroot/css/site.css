@@ -101,7 +101,7 @@ body {
 
 .event-wrapper {
     position: relative;
-    display: inline-block;
+
     width: 225px;
     height: 250px;
     margin-top: 0;
@@ -109,7 +109,7 @@ body {
 
 .event-wrapper:hover .event-hover-shadow {
     visibility: visible;
-    opacity: 0.2;
+    opacity: 0.15;
 }
 
 .event-title {

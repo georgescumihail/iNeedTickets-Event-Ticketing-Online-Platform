@@ -1,0 +1,21 @@
+﻿
+#form-container {
+    margin-left: 10px;
+}
+
+.form-input {
+    margin-bottom: 10px;
+    margin-left: 5px;
+    width: 250px;
+}
+
+#signup-button {
+    width: 120px;
+    margin-top: 20px;
+    margin-left: 135px;
+}
+
+#error-message {
+    margin-top: 10px;
+    margin-left: 10px;
+}

@@ -33,13 +33,13 @@ document.getElementById("buy-button")
 var coords = [locationData.latitude, locationData.longitude];
 var isPopupOpen = false;
 
-var eventMap = L.map("event-map").setView([locationData.latitude, locationData.longitude], 14);
+var eventMap = L.map("event-map").setView(coords, 14);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(eventMap);
 
-L.marker([locationData.latitude, locationData.longitude]).addTo(eventMap)
+L.marker(coords).addTo(eventMap)
     .bindPopup(locationData.name);
 
 document.getElementById("map-toggle")

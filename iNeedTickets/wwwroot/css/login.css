@@ -1,0 +1,41 @@
+﻿
+#login-container {
+    padding: 40px 20px;
+}
+
+.login-title {
+    margin-bottom: 10px;
+}
+
+.login-text {
+    margin-bottom: 30px;
+}
+
+#signup-link {
+    font-weight: 500;
+}
+
+.login-row {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px;
+}
+
+.form-input {
+    width: 200px;
+}
+
+#login-button {
+    width: 90px;
+    margin-top: 10px;
+    margin-left: auto;
+}
+
+#error-message {
+    color: #ee7777;
+    visibility: hidden;
+    margin: 0px;
+    margin-left: auto;
+}

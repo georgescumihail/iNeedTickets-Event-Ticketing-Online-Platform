@@ -1,4 +1,4 @@
-﻿@model IEnumerable<iNeedTickets.Models.Event>
+﻿@model iNeedTickets.Models.MainPageModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -14,22 +14,81 @@
 
     <div id="main-page">
 
-        <div id="upcoming-area">
+        <div id="main-events-area">
+
+            @if (Context.User.Identity.IsAuthenticated)
+            {
+                <h4 class="main-text">Recommended for you:</h4>
+
+                <div class="events-area border-top">
+
+                    @foreach (var e in Model.RecommendedEvents)
+                    {
+                        <div class="event-wrapper border text-center mx-2 my-3">
+                            <div class="event-hover-shadow" onclick="handleEventClick(@e.Id)"></div>
+                            <a href="/events/event/@e.Id">
+                                <img class="event-banner mb-1" src="~/img/@e.PhotoLink" alt="Event banner" />
+                            </a>
+                            <a class="event-title" href="/events/event/@e.Id">@e.Name</a>
+                            <p class="event-date">@e.Date.ToString("dd'/'MM'/'yyyy")</p>
+                            <p class="event-location float-right mr-3">@e.Location.Name</p>
+                        </div>
+                    }
+                </div>
+            }
 
             <h4 class="main-text">Upcoming events:</h4>
 
-            <div id="upcoming-events" class="border-top">
+            <div class="events-area border-top">
 
-                 @foreach (var e in Model) {
+                @foreach (var e in Model.UpcomingEvents)
+                {
+                    <div class="event-wrapper border text-center mx-2 my-3">
+                        <div class="event-hover-shadow" onclick="handleEventClick(@e.Id)"></div>
+                        <a href="/events/event/@e.Id">
+                            <img class="event-banner mb-1" src="~/img/@e.PhotoLink" alt="Event banner" />
+                        </a>
+                        <a class="event-title" href="/events/event/@e.Id">@e.Name</a>
+                        <p class="event-date">@e.Date.ToString("dd'/'MM'/'yyyy")</p>
+                        <p class="event-location float-right mr-3">@e.Location.Name</p>
+                    </div>
+                }
+            </div>
 
-                <div class="event-wrapper border text-center mx-2 my-3">
-                    <div class="event-hover-shadow" onclick="handleEventClick(@e.Id)"></div>
-                    <a href="/events/event/@e.Id"><img class="event-banner mb-1" src="~/img/@e.PhotoLink" alt="Event banner" /></a>
-                    <a class="event-title" href="/events/event/@e.Id">@e.Name</a>
-                    <p class="event-date">@e.Date.ToString("dd'/'MM'/'yyyy")</p>
-                    <p class="event-location float-right mr-3">@e.Location.Name</p>
-                </div>
-                 }
+            <h4 class="main-text">Some breathtaking concerts: </h4>
+
+            <div class="events-area border-top">
+
+                @foreach (var e in Model.ConcertEvents)
+                {
+                    <div class="event-wrapper border text-center mx-2 my-3">
+                        <div class="event-hover-shadow" onclick="handleEventClick(@e.Id)"></div>
+                        <a href="/events/event/@e.Id">
+                            <img class="event-banner mb-1" src="~/img/@e.PhotoLink" alt="Event banner" />
+                        </a>
+                        <a class="event-title" href="/events/event/@e.Id">@e.Name</a>
+                        <p class="event-date">@e.Date.ToString("dd'/'MM'/'yyyy")</p>
+                        <p class="event-location float-right mr-3">@e.Location.Name</p>
+                    </div>
+                }
+            </div>
+
+            <h4 class="main-text">Amazing theatre shows:</h4>
+
+            <div class="events-area border-top">
+
+                @foreach (var e in Model.TheatreEvents)
+                {
+                    <div class="event-wrapper border text-center mx-2 my-3">
+                        <div class="event-hover-shadow" onclick="handleEventClick(@e.Id)"></div>
+                        <a href="/events/event/@e.Id">
+                            <img class="event-banner mb-1" src="~/img/@e.PhotoLink" alt="Event banner" />
+                        </a>
+                        <a class="event-title" href="/events/event/@e.Id">@e.Name</a>
+                        <p class="event-date">@e.Date.ToString("dd'/'MM'/'yyyy")</p>
+                        <p class="event-location float-right mr-3">@e.Location.Name</p>
+                    </div>
+                }
             </div>
         </div>
     </div>

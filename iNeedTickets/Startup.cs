@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using iNeedTickets.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace iNeedTickets
 {
@@ -25,6 +26,10 @@ namespace iNeedTickets
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:Events:ConnectionString"]));
+
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -55,6 +60,7 @@ namespace iNeedTickets
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

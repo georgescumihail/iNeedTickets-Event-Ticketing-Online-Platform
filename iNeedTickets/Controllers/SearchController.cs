@@ -8,16 +8,16 @@ namespace iNeedTickets.Controllers
 {
     public class SearchController : Controller
     {
-        private IEventRepository repository;
+        private IEventRepository _eventsRepository;
 
         public SearchController(IEventRepository repo)
         {
-            repository = repo;
+            _eventsRepository = repo;
         }
 
         public IActionResult Index(string query)
         {
-            var searchResults = repository.Events.Where(e => e.Name.Contains(query) || e.Location.Name.Contains(query));
+            var searchResults = _eventsRepository.GetEventsByQuery(query);
 
             return View("SearchResults", searchResults.ToList());
         }

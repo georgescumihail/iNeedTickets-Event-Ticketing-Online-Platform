@@ -9,7 +9,9 @@ namespace iNeedTickets.Models
 
         public float Price { get; set; }
 
-        public int Capacity { get; set; }
+        public int TicketsCapacity { get; set; }
+
+        public int TicketsRemaining { get; set; }
 
         public Event EventRef { get; set; }
     }

@@ -1,14 +1,27 @@
 ﻿
-#upcoming-events {
-    text-align: center;
+.events-area {
     padding: 15px;
-    margin-top:15px;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-#upcoming-area {
+#main-events-area {
     margin: 30px;
 }
 
 .main-text {
-    margin-left: 30px;
+    margin-left: 40px;
+}
+
+@media screen and (max-width: 767px) {
+
+    #upcoming-events {
+        margin-left: 2%;
+    }
+
+    .main-text {
+        margin-left: 10px;
+    }
 }

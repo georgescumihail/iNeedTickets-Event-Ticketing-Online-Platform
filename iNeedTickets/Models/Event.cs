@@ -18,6 +18,6 @@ namespace iNeedTickets.Models
 
         public string PhotoLink { get; set; }
 
-        public virtual ICollection<TicketClass> TicketClasses { get; set; }
+        public ICollection<TicketClass> TicketClasses { get; set; }
     }
 }

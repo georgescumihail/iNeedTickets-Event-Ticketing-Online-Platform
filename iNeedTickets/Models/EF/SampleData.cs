@@ -47,19 +47,19 @@ namespace iNeedTickets.Models
             if (!context.TicketTypes.Any())
             {
                 context.TicketTypes.AddRange(
-                    new TicketClass { AreaName = "Golden Circle", Capacity = 500, Price = 1400, EventRef = event1 },
-                    new TicketClass { AreaName = "Silver Circle", Capacity = 500, Price = 800, EventRef = event1 },
-                    new TicketClass { AreaName = "Normal Circle", Capacity = 500, Price = 400, EventRef = event1 },
-                    new TicketClass { AreaName = "Normal Circle", Capacity = 500, Price = 100, EventRef = event2 },
-                    new TicketClass { AreaName = "Normal Circle", Capacity = 500, Price = 200, EventRef = event3 },
-                    new TicketClass { AreaName = "Normal Circle", Capacity = 500, Price = 100, EventRef = event4 },
-                    new TicketClass { AreaName = "Normal Circle", Capacity = 500, Price = 200, EventRef = event5 },
-                    new TicketClass { AreaName = "Normal Circle", Capacity = 500, Price = 100, EventRef = event6 },
-                    new TicketClass { AreaName = "Normal Circle", Capacity = 500, Price = 200, EventRef = event7 },
-                    new TicketClass { AreaName = "Normal Circle", Capacity = 500, Price = 50, EventRef = event8 },
-                    new TicketClass { AreaName = "Normal Circle", Capacity = 500, Price = 100, EventRef = event9 },
-                    new TicketClass { AreaName = "Normal Circle", Capacity = 500, Price = 300, EventRef = event10 },
-                    new TicketClass { AreaName = "Normal Circle", Capacity = 500, Price = 100, EventRef = event11 }
+                    new TicketClass { AreaName = "Golden Circle", TicketsCapacity = 100, TicketsRemaining = 100, Price = 1400, EventRef = event1 },
+                    new TicketClass { AreaName = "Silver Circle", TicketsCapacity = 500, TicketsRemaining = 500, Price = 800, EventRef = event1 },
+                    new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 1500, TicketsRemaining = 1500, Price = 400, EventRef = event1 },
+                    new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 100, TicketsRemaining = 100, Price = 100, EventRef = event2 },
+                    new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 200, TicketsRemaining = 200, Price = 200, EventRef = event3 },
+                    new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 300, TicketsRemaining = 300, Price = 100, EventRef = event4 },
+                    new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 200, TicketsRemaining = 200, Price = 200, EventRef = event5 },
+                    new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 500, TicketsRemaining = 500, Price = 100, EventRef = event6 },
+                    new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 100, TicketsRemaining = 100, Price = 200, EventRef = event7 },
+                    new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 500, TicketsRemaining = 500, Price = 50, EventRef = event8 },
+                    new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 200, TicketsRemaining = 200, Price = 100, EventRef = event9 },
+                    new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 700, TicketsRemaining = 700, Price = 300, EventRef = event10 },
+                    new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 100, TicketsRemaining = 100, Price = 100, EventRef = event11 }
                     );
                 context.SaveChanges();
             }

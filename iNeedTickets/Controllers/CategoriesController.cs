@@ -1,53 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using iNeedTickets.Models;
+﻿using iNeedTickets.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace iNeedTickets.Controllers
 {
     public class CategoriesController : Controller
     {
-        private IEventRepository repository;
+        private IEventRepository _eventsRepository;
 
         public CategoriesController(IEventRepository repo)
         {
-            repository = repo;
+            _eventsRepository = repo;
         }
 
         public IActionResult Concerts()
         {
-            var selectedEvents = repository.Events.Where(e => e.EventType == EventType.Concerts);
+            var selectedEvents = _eventsRepository.GetEventsByType(EventType.Concerts);
 
+            ViewData.Add("CategoryName", "Concerts");
             return View("CategoryView", selectedEvents);
         }
 
         public IActionResult Theatre()
         {
-            var selectedEvents = repository.Events.Where(e => e.EventType == EventType.Theatre);
+            var selectedEvents = _eventsRepository.GetEventsByType(EventType.Theatre);
 
+            ViewData.Add("CategoryName", "Theatre");
             return View("CategoryView", selectedEvents);
         }
 
         public IActionResult Sports()
         {
-            var selectedEvents = repository.Events.Where(e => e.EventType == EventType.Sports);
+            var selectedEvents = _eventsRepository.GetEventsByType(EventType.Sports);
 
+            ViewData.Add("CategoryName", "Sports");
             return View("CategoryView", selectedEvents);
         }
 
         public IActionResult Standup()
         {
-            var selectedEvents = repository.Events.Where(e => e.EventType == EventType.Standup);
+            var selectedEvents = _eventsRepository.GetEventsByType(EventType.Standup);
 
+            ViewData.Add("CategoryName", "Standup");
             return View("CategoryView", selectedEvents);
         }
 
         public IActionResult Art()
         {
-            var selectedEvents = repository.Events.Where(e => e.EventType == EventType.Art);
+            var selectedEvents = _eventsRepository.GetEventsByType(EventType.Art);
 
+            ViewData.Add("CategoryName", "Art");
             return View("CategoryView", selectedEvents);
         }
     }

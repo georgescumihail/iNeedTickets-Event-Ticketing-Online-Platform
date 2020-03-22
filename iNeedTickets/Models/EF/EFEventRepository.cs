@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace iNeedTickets.Models
 {
@@ -15,6 +14,47 @@ namespace iNeedTickets.Models
             dbContext = context;
         }
 
-        public IQueryable<Event> Events => dbContext.Events.Include(e => e.TicketClasses).Include(e => e.Location);
+        public IQueryable<Event> GetAllUpcomingEvents() {
+            return dbContext.Events
+                .Where(e => e.Date > DateTime.Now)
+                .Include(e => e.TicketClasses)
+                .Include(e => e.Location);
+        }
+
+        public Event GetEventById(int id) {
+            return dbContext.Events
+                .Where(e => e.Date > DateTime.Now)
+                .Include(e => e.TicketClasses)
+                .Include(e => e.Location)
+                .FirstOrDefault(e => e.Id == id);
+        }
+
+        public IQueryable<Event> GetEventsByQuery(string query) {
+            return dbContext.Events
+                .Where(e => e.Date > DateTime.Now)
+                .Include(e => e.TicketClasses)
+                .Include(e => e.Location)
+                .Where(e => e.Name.Contains(query) || e.Location.Name.Contains(query))
+                .OrderBy(e => e.Date);
+        }
+
+        public IQueryable<Event> GetEventsByType(EventType eventType, int selectionSize = 8)
+        {
+            return dbContext.Events
+                .Where(e => e.Date > DateTime.Now)
+                .Include(e => e.TicketClasses)
+                .Include(e => e.Location)
+                .Where(e => e.EventType == eventType);
+        }
+
+        public IQueryable<Event> GetClosestUpcomingEvents(int selectionSize)
+        {
+            return dbContext.Events
+                .Where(e => e.Date > DateTime.Now)
+                .Include(e => e.TicketClasses)
+                .Include(e => e.Location)
+                .OrderBy(e => e.Date)
+                .Take(selectionSize);
+        }
     }
 }
