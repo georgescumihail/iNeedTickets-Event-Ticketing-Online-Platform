@@ -76,8 +76,15 @@ body {
     opacity: 0.8;
 }
 
-.categories-link {
+#signout-link {
+    color: #ff6677;
+}
 
+#user-dropdown {
+    white-space: nowrap;
+}
+
+.categories-link {
     vertical-align: middle;
     margin: 0 40px;
     width: inherit;

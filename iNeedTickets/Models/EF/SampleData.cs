@@ -26,7 +26,7 @@ namespace iNeedTickets.Models
                 context.SaveChanges();
             }
 
-            var event1 = new Event() { Name = "Metallica Concert", Location = location1, Description = "Metallica se intorc in Romania pentru prima data in ultimii 10 ani, pentru un show de proportii", EventType = EventType.Concerts, Date = DateTime.Now, PhotoLink = "metallica.jpeg" };
+            var event1 = new Event() { Name = "Metallica Concert", Location = location1, Description = "Metallica se intorc in Romania pentru prima data in ultimii 10 ani, pentru un show de proportii", EventType = EventType.Concerts, Date = DateTime.Now.AddDays(50), PhotoLink = "metallica.jpeg" };
             var event2 = new Event() { Name = "Rammstein Concert", Location = location1, Description = "Rammstein va asteapta la un show incendiar in Piata Constitutiei, cu ocazia landarii noului material discografic", EventType = EventType.Concerts, Date = DateTime.Now.AddDays(25), PhotoLink = "rammstein.jpg" };
             var event3 = new Event() { Name = "Quantic Fest", Location = location5, Description = "Un nou festival", EventType = EventType.Concerts, Date = DateTime.Now.AddDays(15), PhotoLink = "quantic.jpg" };
             var event4 = new Event() { Name = "Stand Up Night", Location = location4, Description = "Seara funny cu cei mai buni artisti de stand-up", EventType = EventType.Standup, Date = DateTime.Now.AddDays(3), PhotoLink = "standup1.jpg" };

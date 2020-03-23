@@ -22,12 +22,21 @@ loginButton.addEventListener("click", () => {
             })
         })
             .then(res => res.json())
-            .then(res => displayErrorMessage(res.message));
+            .then(res => handleLoginResponse(res));
     }
     else {
         displayErrorMessage("Please complete all fields!");
     }
 });
+
+handleLoginResponse = res => {
+    if (res.isSuccess) {
+        window.location.href = previousUrl;
+    }
+    else {
+        displayErrorMessage(res.message);
+    }
+}
 
 displayErrorMessage = message => {
     errorMessage.style.visibility = "visible";

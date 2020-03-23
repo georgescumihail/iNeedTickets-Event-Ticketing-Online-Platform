@@ -2,16 +2,21 @@
 
 var typePicker = document.getElementById("type-picker");
 var numberPicker = document.getElementById("number-picker");
-var priceLabel = document.getElementById("total-price-value");
+var priceValueField = document.getElementById("total-price-value");
+var priceRow = document.getElementById("total-price");
+var ticketsAlert = document.getElementById("tickets-alert");
+var buyButton = document.getElementById("buy-button");
 
-var selectedPrice = typePicker.options[typePicker.selectedIndex].value;
 var ticketsNo = numberPicker.options[typePicker.selectedIndex].value;
 
-updatePrice();
+var selectedType;
+var selectedPrice;
+
+updateDetails();
 
 typePicker.addEventListener("change", e => {
     selectedPrice = e.target.value;
-    updatePrice();
+    updateDetails();
 });
 
 numberPicker.addEventListener("change", e => {
@@ -19,14 +24,58 @@ numberPicker.addEventListener("change", e => {
     updatePrice();
 });
 
-function updatePrice(){
-    priceLabel.textContent = selectedPrice * ticketsNo;
+function updateDetails() {
+    selectedType = typePicker.options[typePicker.selectedIndex].value;
+    console.log(selectedType);
+    selectedPrice = optionsList.find(o => o.id == selectedType).price;
+    ticketsLeft = optionsList.find(o => o.id == selectedType).ticketsLeft;
+
+    updatePrice();
+
+
+    if (ticketsLeft == 0) {
+        ticketsAlert.innerText = `No tickets left!`;
+        ticketsAlert.style.visibility = "visible";
+        buyButton.disabled = true;
+        numberPicker.disabled = true;
+        priceRow.style.visibility = "hidden";
+
+    }
+    else if (ticketsLeft <= 100) {
+        ticketsAlert.innerText = `Only ${ticketsLeft} tickets left!`;
+        ticketsAlert.style.visibility = "visible";
+        buyButton.disabled = false;
+        numberPicker.disabled = false;
+        priceRow.style.visibility = "hidden";
+    }
+    else {
+        ticketsAlert.innerText = "";
+        ticketsAlert.style.visibility = "hidden";
+        buyButton.disabled = false;
+        numberPicker.disabled = false;
+        priceRow.style.visibility = "hidden";
+    }
+
+    var nrOfAvailableTickets = 4;
+    if (ticketsLeft < nrOfAvailableTickets) {
+        nrOfAvailableTickets = ticketsLeft;
+    }
+    numberPicker.options.length = 0;
+    for (var ticketsNr = 1; ticketsNr <= nrOfAvailableTickets; ticketsNr++) {
+        numberPicker.options[numberPicker.options.length] = new Option(ticketsNr, ticketsNr);
+    }
 }
 
-document.getElementById("buy-button")
-    .addEventListener("click", () => {
-        alert(`Order placed for a total of ${selectedPrice * ticketsNo}`);
+function updatePrice() {
+    priceValueField.textContent = selectedPrice * ticketsNo;
+}
+
+
+buyButton.addEventListener("click", () => {
+    alert(`Order placed for a total of ${selectedPrice * ticketsNo}`);
 });
+
+
 
 //map handling
 

@@ -29,7 +29,7 @@
                     <select id="type-picker">
                         @foreach(var type in Model.TicketClasses)
                         {
-                        <option value="@type.Price">@type.AreaName - @type.Price RON</option>
+                        <option value="@type.Id">@type.AreaName - @type.Price RON</option>
                         }
                     </select>
                     <label id="ticket-nr-label">Number of tickets:</label>
@@ -40,7 +40,7 @@
                         <option value="4">4</option>
                     </select>
                     <div>
-                        <input id="buy-button" class="btn btn-primary" type="button" value="Buy" />
+                        <input id="buy-button" class="btn btn-primary" type="button" value="Buy" /><span id="tickets-alert"></span>
                         <span id="total-price">Total price: <span id="total-price-value"></span> RON</span>
                     </div>
                 </div>
@@ -62,6 +62,10 @@
         </div>
     </div>
     <script>
+        var optionsList = [];
+        @foreach(var type in Model.TicketClasses){
+            <text>optionsList.push({ id: @type.Id, price: @type.Price, ticketsLeft: @type.TicketsRemaining});</text>
+        }
         var locationData = @Html.Raw(Json.Serialize(Model.Location));
     </script>
     <script src="~/js/event.js"></script>

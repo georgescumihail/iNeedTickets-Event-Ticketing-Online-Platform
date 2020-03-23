@@ -17,8 +17,9 @@ namespace iNeedTickets.Controllers
             _signInManager = signInManager;
         }
 
-        public IActionResult Login()
+        public IActionResult Login(string previousUrl)
         {
+            ViewBag.previousUrl = previousUrl;
             return View();
         }
 
@@ -27,18 +28,17 @@ namespace iNeedTickets.Controllers
         {
             var user = await _userManager.FindByEmailAsync(data.Email);
 
-            if(user != null)
+            if (user != null)
             {
-                await _signInManager.SignOutAsync();
                 var signInResult = await _signInManager.PasswordSignInAsync(user, data.Password, true, false);
 
                 if (signInResult.Succeeded)
                 {
-                    Redirect("/");
+                    return Json(new { isSuccess = true });
                 }
             }
 
-            return Json(new { message = "Invalid username or password!" });
+            return Json(new { isSuccess = false, message = "Invalid username or password!" });
         }
 
         public IActionResult Create()
@@ -68,6 +68,15 @@ namespace iNeedTickets.Controllers
                 result.Errors.ToList().ForEach(e => errorMessage += e.Description + "\n");
                 return Json(new { message = errorMessage });
             }
+        }
+
+        public async Task<IActionResult> Signout()
+        {
+            if (User.Identity.IsAuthenticated) {
+                await _signInManager.SignOutAsync();
+            }
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
