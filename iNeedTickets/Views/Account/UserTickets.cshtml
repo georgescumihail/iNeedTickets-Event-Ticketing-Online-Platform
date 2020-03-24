@@ -1,0 +1,13 @@
+﻿@model IEnumerable<iNeedTickets.Models.Ticket>
+
+@{
+    ViewData["Title"] = "UserTickets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul>
+    @foreach (var ticket in Model)
+    {
+        <li>@ticket.Id - @ticket.TicketClassRef.EventRef.Name - @ticket.TicketClassRef.AreaName</li>
+    }
+</ul>

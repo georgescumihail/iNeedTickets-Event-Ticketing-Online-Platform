@@ -3,26 +3,33 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace iNeedTickets.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private UserManager<User> _userManager;
         private SignInManager<User> _signInManager;
+        private ITicketRepository _ticketRepository;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, ITicketRepository ticketRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _ticketRepository = ticketRepository;
         }
 
+        [AllowAnonymous]
         public IActionResult Login(string previousUrl)
         {
             ViewBag.previousUrl = previousUrl;
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login([FromBody]LoginModel data)
         {
@@ -77,6 +84,15 @@ namespace iNeedTickets.Controllers
             }
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Tickets()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var ticketList = _ticketRepository.GetTicketListByUser(userId).OrderByDescending(t => t.Id);
+
+            return View("UserTickets", ticketList);
         }
     }
 }

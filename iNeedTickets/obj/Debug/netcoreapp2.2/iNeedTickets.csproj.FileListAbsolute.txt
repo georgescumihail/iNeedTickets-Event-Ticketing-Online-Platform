@@ -68,3 +68,4 @@ C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcorea
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cs
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Account\Login.g.cshtml.cs
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Account\Signup.g.cshtml.cs
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Account\UserTickets.g.cshtml.cs

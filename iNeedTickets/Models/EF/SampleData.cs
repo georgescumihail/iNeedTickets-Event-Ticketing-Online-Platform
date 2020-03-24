@@ -37,6 +37,7 @@ namespace iNeedTickets.Models
             var event9 = new Event() { Name = "Fotbal - Romania vs Brazilia", Location = location3, Description = "Cel mai asteptat meci din acest an", EventType = EventType.Sports, Date = DateTime.Now.AddDays(30), PhotoLink = "fotbal.jpg" };
             var event10 = new Event() { Name = "Finala Handbal", Location = location3, Description = "Finala campionatului de handbal", EventType = EventType.Sports, Date = DateTime.Now.AddDays(15), PhotoLink = "handbal.png" };
             var event11 = new Event() { Name = "Painting Expo", Location = location6, Description = "Expozitie de pictura la galeria de arta", EventType = EventType.Art, Date = DateTime.Now.AddDays(15), PhotoLink = "painting.jpg" };
+            var event12 = new Event() { Name = "Lansare Artificial Perception", Location = location1, Description = "Cel mai asteptat eveniment metalcore al anului", EventType = EventType.Concerts, Date = DateTime.Now.AddDays(45), PhotoLink = "artificial.jpg" };
 
             if (!context.Events.Any())
             {
@@ -59,7 +60,9 @@ namespace iNeedTickets.Models
                     new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 500, TicketsRemaining = 500, Price = 50, EventRef = event8 },
                     new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 200, TicketsRemaining = 200, Price = 100, EventRef = event9 },
                     new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 700, TicketsRemaining = 700, Price = 300, EventRef = event10 },
-                    new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 100, TicketsRemaining = 100, Price = 100, EventRef = event11 }
+                    new TicketClass { AreaName = "Normal Circle", TicketsCapacity = 100, TicketsRemaining = 100, Price = 100, EventRef = event11 },
+                    new TicketClass { AreaName = "VIP", TicketsCapacity = 50, TicketsRemaining = 50, Price = 100, EventRef = event12 },
+                    new TicketClass { AreaName = "Standard", TicketsCapacity = 200, TicketsRemaining = 200, Price = 100, EventRef = event12 }
                     );
                 context.SaveChanges();
             }
