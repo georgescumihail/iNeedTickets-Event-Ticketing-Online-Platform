@@ -5,8 +5,8 @@ namespace iNeedTickets.Models
     {
         public int Id { get; set; }
 
-        public int UserRef { get; set; }
+        public string UserRef { get; set; }
 
-        public int EventClassRef { get; set; }
+        public TicketClass TicketClassRef { get; set; }
     }
 }

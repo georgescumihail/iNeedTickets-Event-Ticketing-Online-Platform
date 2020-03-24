@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using iNeedTickets.Models;
 using Microsoft.AspNetCore.Identity;
+using iNeedTickets.Services;
 
 namespace iNeedTickets
 {
@@ -39,6 +40,7 @@ namespace iNeedTickets
             });
 
             services.AddTransient<IEventRepository, EFEventRepository>();
+            services.AddTransient<IPurchaseService, PurchaseService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using iNeedTickets.Models;
 
 namespace iNeedTickets.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200324020912_TicketChange")]
+    partial class TicketChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -179,13 +181,11 @@ namespace iNeedTickets.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("TicketClassRefId");
+                    b.Property<int>("EventClassRef");
 
                     b.Property<string>("UserRef");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TicketClassRefId");
 
                     b.ToTable("Tickets");
                 });
@@ -314,13 +314,6 @@ namespace iNeedTickets.Migrations
                     b.HasOne("iNeedTickets.Models.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationId");
-                });
-
-            modelBuilder.Entity("iNeedTickets.Models.Ticket", b =>
-                {
-                    b.HasOne("iNeedTickets.Models.TicketClass", "TicketClassRef")
-                        .WithMany()
-                        .HasForeignKey("TicketClassRefId");
                 });
 
             modelBuilder.Entity("iNeedTickets.Models.TicketClass", b =>

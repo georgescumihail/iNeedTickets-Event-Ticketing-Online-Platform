@@ -7,7 +7,7 @@ var priceRow = document.getElementById("total-price");
 var ticketsAlert = document.getElementById("tickets-alert");
 var buyButton = document.getElementById("buy-button");
 
-var ticketsNo = numberPicker.options[typePicker.selectedIndex].value;
+var selectedTicketsNo = numberPicker.options[typePicker.selectedIndex].value;
 
 var selectedType;
 var selectedPrice;
@@ -20,18 +20,15 @@ typePicker.addEventListener("change", e => {
 });
 
 numberPicker.addEventListener("change", e => {
-    ticketsNo = e.target.value;
+    selectedTicketsNo = e.target.value;
     updatePrice();
 });
 
 function updateDetails() {
+
     selectedType = typePicker.options[typePicker.selectedIndex].value;
-    console.log(selectedType);
     selectedPrice = optionsList.find(o => o.id == selectedType).price;
     ticketsLeft = optionsList.find(o => o.id == selectedType).ticketsLeft;
-
-    updatePrice();
-
 
     if (ticketsLeft == 0) {
         ticketsAlert.innerText = `No tickets left!`;
@@ -46,14 +43,14 @@ function updateDetails() {
         ticketsAlert.style.visibility = "visible";
         buyButton.disabled = false;
         numberPicker.disabled = false;
-        priceRow.style.visibility = "hidden";
+        priceRow.style.visibility = "visible";
     }
     else {
         ticketsAlert.innerText = "";
         ticketsAlert.style.visibility = "hidden";
         buyButton.disabled = false;
         numberPicker.disabled = false;
-        priceRow.style.visibility = "hidden";
+        priceRow.style.visibility = "visible";
     }
 
     var nrOfAvailableTickets = 4;
@@ -64,15 +61,29 @@ function updateDetails() {
     for (var ticketsNr = 1; ticketsNr <= nrOfAvailableTickets; ticketsNr++) {
         numberPicker.options[numberPicker.options.length] = new Option(ticketsNr, ticketsNr);
     }
+
+    if (ticketsLeft > 0) {
+        selectedTicketsNo = numberPicker.options[0].value;
+        updatePrice();
+    }
 }
 
 function updatePrice() {
-    priceValueField.textContent = selectedPrice * ticketsNo;
+    priceValueField.textContent = selectedPrice * selectedTicketsNo;
+    console.log(selectedPrice, selectedTicketsNo);
 }
 
 
 buyButton.addEventListener("click", () => {
-    alert(`Order placed for a total of ${selectedPrice * ticketsNo}`);
+    fetch("/payment/execute", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        credentials: 'include',
+        body: JSON.stringify({
+            ticketTypeId: selectedType,
+            ticketsCount: selectedTicketsNo
+        })
+    });
 });
 
 
