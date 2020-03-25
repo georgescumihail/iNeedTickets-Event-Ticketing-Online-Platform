@@ -6,68 +6,68 @@
 
 <html>
 
-<head>
-    <link href="~/css/event.css" rel="stylesheet" type="text/css"/>
-</head>
+    <head>
+        <link href="~/css/event.css" rel="stylesheet" type="text/css"/>
+    </head>
 
-<body>
+    <body>
 
-    <div class="event-page">
+        <div class="event-page">
 
-        <div class="top-wrapper">
-            <div class="image-wrapper">
-                <img class="event-banner" src="~/img/@Model.PhotoLink" alt="Event banner" />
-            </div>
-            <div class="details-wrapper">
-                <h4 class="ml-3">@Model.Name</h4>
-                <div class="details-section m-2 p-2 mt-4 border-top border-bottom">
-                    <p>Date: @Model.Date.ToString("dd'/'MM'/'yyyy")</p>
-                    <p>Location: @Model.Location.Name <span id="map-toggle">see on map</span></p> 
+            <div class="top-wrapper">
+                <div class="image-wrapper">
+                    <img class="event-banner" src="~/img/@Model.PhotoLink" alt="Event banner" />
                 </div>
+                <div class="details-wrapper">
+                    <h4 class="ml-3">@Model.Name</h4>
+                    <div class="details-section m-2 p-2 mt-4 border-top border-bottom">
+                        <p>Date: @Model.Date.ToString("dd'/'MM'/'yyyy")</p>
+                        <p>Location: @Model.Location.Name <span id="map-toggle">see on map</span></p> 
+                    </div>
 
-                <div class="buy-section p-2">
-                    <select id="type-picker">
-                        @foreach(var type in Model.TicketClasses)
-                        {
-                        <option value="@type.Id">@type.AreaName - @type.Price RON</option>
-                        }
-                    </select>
-                    <label id="ticket-nr-label">Number of tickets:</label>
-                    <select id="number-picker">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                    <div>
-                        <input id="buy-button" class="btn btn-primary" type="button" value="Buy" /><span id="tickets-alert"></span>
-                        <span id="total-price">Total price: <span id="total-price-value"></span> RON</span>
+                    <div class="buy-section p-2">
+                        <select id="type-picker">
+                            @foreach(var type in Model.TicketClasses)
+                            {
+                            <option value="@type.Id">@type.AreaName - @type.Price RON</option>
+                            }
+                        </select>
+                        <label id="ticket-nr-label">Number of tickets:</label>
+                        <select id="number-picker">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                        <div>
+                            <input id="buy-button" class="btn btn-primary" type="button" value="Buy" /><span id="tickets-alert"></span>
+                            <span id="total-price">Total price: <span id="total-price-value"></span> RON</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="bottom-event-wrapper border-top">
-            <div class="description-wrapper">
-                <p>@Model.Description</p>
+            <div class="bottom-event-wrapper border-top">
+                <div class="description-wrapper">
+                    <p>@Model.Description</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="map-global-container">
-        <div id="background-shadow"></div>
-        <div id="map-popup">
-            <div id="close-map-button">X</div>
-            <div id="map-container">
-                <div id="event-map"></div>
+        <div id="map-global-container">
+            <div id="background-shadow"></div>
+            <div id="map-popup">
+                <div id="close-map-button">X</div>
+                <div id="map-container">
+                    <div id="event-map"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <script>
-        var optionsList = [];
-        @foreach(var type in Model.TicketClasses){
-            <text>optionsList.push({ id: @type.Id, price: @type.Price, ticketsLeft: @type.TicketsRemaining});</text>
-        }
-        var locationData = @Html.Raw(Json.Serialize(Model.Location));
-    </script>
-    <script src="~/js/event.js"></script>
-</body>
+        <script>
+            var optionsList = [];
+            @foreach(var type in Model.TicketClasses){
+                <text>optionsList.push({ id: @type.Id, price: @type.Price, ticketsLeft: @type.TicketsRemaining});</text>
+            }
+            var locationData = @Html.Raw(Json.Serialize(Model.Location));
+        </script>
+        <script src="~/js/event.js"></script>
+    </body>
 </html>

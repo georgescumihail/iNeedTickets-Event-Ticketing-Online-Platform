@@ -48,11 +48,13 @@ namespace iNeedTickets.Controllers
             return Json(new { isSuccess = false, message = "Invalid username or password!" });
         }
 
+        [AllowAnonymous]
         public IActionResult Create()
         {
             return View("Signup");
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] SignupModel data)
         {
@@ -93,6 +95,15 @@ namespace iNeedTickets.Controllers
             var ticketList = _ticketRepository.GetTicketListByUser(userId).OrderByDescending(t => t.Id);
 
             return View("UserTickets", ticketList);
+        }
+
+        public IActionResult Ticket(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var selectedTicket = _ticketRepository.GetTicketById(id);
+
+            return View(selectedTicket);
         }
     }
 }

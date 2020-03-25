@@ -11,11 +11,11 @@
 </head>
 <body>
     <div class="search-wrapper">
-        <h4 class="main-text border-bottom pb-3">Search results:</h4>
+        <h4 class="main-text border-bottom">Search results:</h4>
         <div class="search-results-area">
             @foreach (var e in Model)
             {
-            <div class="search-event">
+            <div class="search-event border-bottom">
                 <div class="photo-wrapper">
                     <a href="/events/event/@e.Id"><img class="event-photo" src="~/img/@e.PhotoLink" alt="Event photo" /></a>
                 </div>

@@ -1,0 +1,17 @@
+﻿@model Ticket
+
+@{
+    ViewData["Title"] = "Ticket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 class="main-text">Ticket details:</h4>
+<ul>
+    <li>@Model.TicketClassRef.EventRef.Name</li>
+    <li>@Model.TicketClassRef.AreaName</li>
+    <li>@Model.TicketClassRef.EventRef.Date</li>
+</ul>
+
+<ul>
+    <li>@Model.TicketClassRef.EventRef.Location.Name</li>
+</ul>

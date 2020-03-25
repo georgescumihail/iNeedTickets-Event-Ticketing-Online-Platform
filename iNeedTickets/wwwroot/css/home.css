@@ -1,14 +1,7 @@
 ﻿
-.events-area {
-    padding: 15px;
-    margin-top: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 #main-events-area {
     margin: 30px;
+    margin-bottom: 100px;
 }
 
 .main-text {

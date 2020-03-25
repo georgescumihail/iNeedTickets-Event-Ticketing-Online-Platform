@@ -1,18 +1,21 @@
 ﻿
 .search-wrapper {
-    
     padding: 10px;
 }
 
 .search-results-area {
+    padding: 10px;
+    margin-bottom: 100px;
+}
 
-    padding: 20px;
+.main-text {
+    margin: 5px;
+    padding: 10px;
 }
 
 .search-event {
-
-    padding: 10px 0px 30px 25px;
-
+    padding: 10px 0 30px 25px;
+    margin: 10px 20px;
 }
 
 .event-photo {
@@ -33,6 +36,43 @@
     vertical-align: top;
 }
 
+.event-title{
+    font-size: 16px;
+}
+
 .event-date {
     margin-top: 5px;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 767px) {
+
+    .event-photo {
+        width: 220px;
+        height: auto;
+    }
+
+    .event-date {
+        font-size: 13px;
+    }
+
+    .event-details {
+        width: 240px;
+        padding: 0;
+        margin-top: 15px;
+    }
+
+    .search-event {
+        width: 70%;
+        display: block;
+        margin: 0 auto;
+        padding: 15px 0;
+        margin-bottom: 15px;
+    }
+
+    .search-results-area {
+        padding: 0;
+        margin: 0 auto;
+        margin-bottom: 100px;
+    }
 }

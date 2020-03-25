@@ -5,9 +5,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<ul>
-    @foreach (var ticket in Model)
-    {
-        <li>@ticket.Id - @ticket.TicketClassRef.EventRef.Name - @ticket.TicketClassRef.AreaName</li>
-    }
-</ul>
+<html>
+
+    <head>
+        <link href="~/css/usertickets.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+
+        <div id="purchased-tickets-page">
+            @if (Model.ToList().Count > 0)
+            {
+                <h4 class="main-text">Your purchased tickets:</h4>
+                <div id="ticket-list-container">
+                    @foreach (var ticket in Model)
+                    {
+                        <a class="ticket-link" href="/account/ticket/@ticket.Id">
+                            @ticket.TicketClassRef.EventRef.Name - @ticket.TicketClassRef.AreaName - @ticket.TicketClassRef.EventRef.Date
+                        </a>
+                    }
+                </div>
+            }
+            else
+            {
+                <div>You don't have any purchased tickets yet!</div>
+            }
+        </div>
+    </body>
+</html>

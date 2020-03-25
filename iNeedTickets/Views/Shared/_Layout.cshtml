@@ -20,7 +20,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom">
             <div class="container">
                 <a style="white-space:nowrap;" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">iNeedTickets</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-content" aria-controls="#collapse-content"
@@ -44,7 +44,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown user-control-corner">
                                 <a class="nav-link dropdown-toggle"
                                    href="#"
                                    id="user-dropdown"
@@ -68,7 +68,7 @@
                     {
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a style="white-space:nowrap;" class="nav-link" href=@this.Url.Action("Login", "Account", new { previousUrl = Context.Request.Path.ToString() })>
+                                <a style="white-space:nowrap;" class="nav-link user-control-corner" href=@this.Url.Action("Login", "Account", new { previousUrl = Context.Request.Path.ToString() })>
                                 Sign In
                                 </a>
                             </li>
@@ -77,6 +77,12 @@
                 </div>
             </div>
         </nav>
+        <div class="mobile-search-bar">
+            <form asp-controller="search" asp-action="index" class="form-inline mr-auto" id="mobile-search-form" method="get">
+                <input type="text" class="form-control" name="query" id="mobile-search-box" placeholder="Type a name, location, etc..." />
+                <input type="submit" class="btn btn-secondary ml-2" id="mobile-search-button" value="Search" />
+            </form>
+        </div>
         <div class="categories-bar">
             <a href="/categories/concerts" class="categories-link">Concerts</a>
             <a href="/categories/theatre" class="categories-link">Theatre</a>

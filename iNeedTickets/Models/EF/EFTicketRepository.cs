@@ -23,5 +23,15 @@ namespace iNeedTickets.Models
                 .ThenInclude(c => c.EventRef)
                 .ToList();
         }
+
+        public Ticket GetTicketById(int id)
+        {
+            return dbContext.Tickets
+                .Where(t => t.Id == id)
+                .Include(t => t.TicketClassRef)
+                .ThenInclude(c => c.EventRef)
+                .ThenInclude(e => e.Location)
+                .FirstOrDefault();
+        }
     }
 }
