@@ -18,7 +18,7 @@ namespace iNeedTickets.Models
         public List<Ticket> GetTicketListByUser(string userRef)
         {
             return dbContext.Tickets
-                .Where(t => t.UserRef == userRef)
+                .Where(t => t.UserRef.Id == userRef)
                 .Include(t => t.TicketClassRef)
                 .ThenInclude(c => c.EventRef)
                 .ToList();

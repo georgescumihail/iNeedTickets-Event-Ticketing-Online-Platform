@@ -75,7 +75,7 @@ function updatePrice() {
 
 
 buyButton.addEventListener("click", () => {
-    fetch("/payment/execute", {
+    fetch("/purchase/execute", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         credentials: 'include',

@@ -12,24 +12,24 @@ using Microsoft.AspNetCore.Mvc;
 namespace iNeedTickets.Controllers
 {
     [Authorize]
-    public class PaymentController : Controller
+    public class PurchaseController : Controller
     {
         private IPurchaseService _purchaseService;
         private UserManager<User> _userManager;
 
-        public PaymentController(IPurchaseService purchaseService, UserManager<User> userManager)
+        public PurchaseController(IPurchaseService purchaseService, UserManager<User> userManager)
         {
             _purchaseService = purchaseService;
             _userManager = userManager;
         }
 
         [HttpPost]
-        public IActionResult Execute([FromBody] PurchaseModel purchaseData)
+        public async Task<IActionResult> Execute([FromBody] PurchaseModel purchaseData)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            _purchaseService.RegisterPurchase(purchaseData, userId);
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var result = _purchaseService.RegisterPurchase(purchaseData, user);
 
-            return Json("");
+            return Json(new { isSucces = result });
         }
     }
 }

@@ -105,6 +105,10 @@ body {
     white-space: nowrap;
 }
 
+.mobile-user-menu {
+    display: none;
+}
+
 .categories-link {
     vertical-align: middle;
     margin: 0 40px;
@@ -205,10 +209,14 @@ body {
     }
 
     .user-control-corner {
-        margin-left: 15px;
+        display: none;
     }
 
     .mobile-search-bar {
+        display: block;
+    }
+
+    .mobile-user-menu {
         display: block;
     }
 }
