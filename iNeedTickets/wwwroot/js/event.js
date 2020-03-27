@@ -6,11 +6,15 @@ var priceValueField = document.getElementById("total-price-value");
 var priceRow = document.getElementById("total-price");
 var ticketsAlert = document.getElementById("tickets-alert");
 var buyButton = document.getElementById("buy-button");
+var spinner = document.getElementById("loading-spinner");
 
 var selectedTicketsNo = numberPicker.options[typePicker.selectedIndex].value;
 
 var selectedType;
 var selectedPrice;
+var selectedName;
+var totalPrice;
+var isConfirmPopupOpen = false;
 
 updateDetails();
 
@@ -25,9 +29,9 @@ numberPicker.addEventListener("change", e => {
 });
 
 function updateDetails() {
-
     selectedType = typePicker.options[typePicker.selectedIndex].value;
     selectedPrice = optionsList.find(o => o.id == selectedType).price;
+    selectedName = optionsList.find(o => o.id == selectedType).areaName;
     ticketsLeft = optionsList.find(o => o.id == selectedType).ticketsLeft;
 
     if (ticketsLeft == 0) {
@@ -69,29 +73,55 @@ function updateDetails() {
 }
 
 function updatePrice() {
-    priceValueField.textContent = selectedPrice * selectedTicketsNo;
-    console.log(selectedPrice, selectedTicketsNo);
+    totalPrice = selectedPrice * selectedTicketsNo
+    priceValueField.textContent = totalPrice;
 }
 
-
 buyButton.addEventListener("click", () => {
-    fetch("/purchase/execute", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        credentials: 'include',
-        body: JSON.stringify({
-            ticketTypeId: selectedType,
-            ticketsCount: selectedTicketsNo
-        })
-    });
+    isConfirmPopupOpen = true;
+    document.getElementById("confirm-purchase-global-container").style.display = "block";
+    document.getElementById("confirm-message").innerText = `${selectedTicketsNo} x ${eventName} - ${selectedName}`;
+    document.getElementById("popup-price-tag").innerText = `${selectedPrice} lei`;
+    document.getElementById("popup-price-total").innerText = `Total price: ${totalPrice} lei`;
 });
 
+document.getElementById("confirm-button")
+    .addEventListener("click", () => {
+
+        spinner.style.visibility = "visible";
+
+        fetch("/purchase/execute", {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            credentials: 'include',
+            body: JSON.stringify({
+                ticketTypeId: selectedType,
+                ticketsCount: selectedTicketsNo
+            })
+        })
+            .then(res => res.json())
+            .then(res => handlePurchaseResponse(res));
+});
+
+function handlePurchaseResponse(res) {
+
+    spinner.style.visibility = "hidden";
+
+    if (res.isSuccess) {
+        document.getElementById("success-buttons").style.display = "block";
+        document.getElementById("confirm-button").style.display = "none";
+        document.getElementById("purchase-success-message").style.display = "block";
+    }
+    else {
+        document.getElementById("purchase-error-message").style.display = "block";
+    }
+}
 
 
 //map handling
 
 var coords = [locationData.latitude, locationData.longitude];
-var isPopupOpen = false;
+var isMapPopupOpen = false;
 
 var eventMap = L.map("event-map").setView(coords, 14);
 
@@ -106,12 +136,19 @@ document.getElementById("map-toggle")
     .addEventListener("click", () => {
         document.getElementById("map-global-container").style.display = "block";
         eventMap.invalidateSize();
-        isPopupOpen = true;
-});
+        isMapPopupOpen = true;
+    });
 
-document.getElementById("close-map-button")
+document.getElementById("close-map")
     .addEventListener("click", () => {
-    if (isPopupOpen == true) {
+        if (isMapPopupOpen == true) {
         document.getElementById("map-global-container").style.display = "none";
-    }
-});
+        }
+    });
+
+document.getElementById("close-purchase")
+    .addEventListener("click", () => {
+        if (isConfirmPopupOpen == true) {
+            document.getElementById("confirm-purchase-global-container").style.display = "none";
+        }
+    });

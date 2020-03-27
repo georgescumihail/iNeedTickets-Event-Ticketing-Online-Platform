@@ -93,14 +93,24 @@
     left: 0;
 }
 
-#background-shadow {
+#confirm-purchase-global-container {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 30;
+    top: 0;
+    left: 0;
+}
+
+.background-shadow {
     background-color: #555;
     width: 100%;
     height: 100%;
     opacity: 0.4;
 }
 
-#map-popup {
+.event-popup {
     background-color: #fff;
     display: flex;
     border-radius: 5px;
@@ -116,7 +126,7 @@
     right: 0;
 }
 
-#close-map-button {
+.close-popup-button {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -144,6 +154,72 @@
     height: 100%;
 }
 
+#confirm-header {
+    position: absolute;
+    top: 40px;
+    left: 60px;
+}
+
+#confirm-message {
+    position: absolute;
+    top: 100px;
+    left: 60px;
+}
+
+#confirm-button {
+    position: absolute;
+    bottom: 40px;
+    right: 60px;
+}
+
+#loading-spinner {
+    visibility: hidden;
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+    height: 30px;
+    width: 30px;
+}
+
+#success-buttons {
+    display: none;
+    position: absolute;
+    bottom: 40px;
+    right: 60px;
+}
+
+#purchase-success-message {
+    display: none;
+    position: absolute;
+    bottom: 100px;
+    right: 80px;
+}
+
+#purchase-error-message {
+    display: none;
+    position: absolute;
+    bottom: 100px;
+    right: 80px;
+    color: #ff6677;
+}
+
+#popup-price-tag {
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    position: absolute;
+    top: 100px;
+    right: 120px;
+}
+
+#popup-price-total {
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 160px;
+    left: 60px;
+}
+
 
 @media screen and (max-width: 767px) {
     .details-wrapper {
@@ -161,7 +237,7 @@
         margin: 15px;
     }
 
-    #map-popup {
+    .event-popup {
         width: 300px;
         height: 200px;
     }

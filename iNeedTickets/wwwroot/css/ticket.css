@@ -1,0 +1,17 @@
+﻿
+#ticket-details-header{
+    margin: 20px;
+}
+
+#download-link {
+    display: block;
+    margin-top: 10px;
+    margin-left: 30px;
+    font-size: 18px;
+}
+
+#ticket-image {
+    width: 400px;
+    height: auto;
+    margin: 20px;
+}

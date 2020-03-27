@@ -29,7 +29,7 @@ namespace iNeedTickets.Controllers
             var user = await _userManager.GetUserAsync(HttpContext.User);
             var result = _purchaseService.RegisterPurchase(purchaseData, user);
 
-            return Json(new { isSucces = result });
+            return Json(new { isSuccess = result });
         }
     }
 }

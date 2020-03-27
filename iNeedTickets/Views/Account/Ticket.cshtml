@@ -5,13 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h4 class="main-text">Ticket details:</h4>
-<ul>
-    <li>@Model.TicketClassRef.EventRef.Name</li>
-    <li>@Model.TicketClassRef.AreaName</li>
-    <li>@Model.TicketClassRef.EventRef.Date</li>
-</ul>
-
-<ul>
-    <li>@Model.TicketClassRef.EventRef.Location.Name</li>
-</ul>
+<html>
+    <head>
+        <link href="~/css/ticket.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h4 id="ticket-details-header" class="main-text">Ticket details:</h4>
+        <a id="download-link" href="@Url.Action("TicketPhoto", "Account", new { fileName = Model.FileName })" download="@Model.FileName">
+            Click here to download the ticket
+        </a>
+        <img id="ticket-image" src="@Url.Action("TicketPhoto", "Account", new { fileName = Model.FileName })" alt="Ticket Image" />
+    </body>
+</html>

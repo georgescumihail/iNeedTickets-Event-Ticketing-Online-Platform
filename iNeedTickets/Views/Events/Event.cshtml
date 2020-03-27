@@ -22,14 +22,14 @@
                     <h4 class="ml-3">@Model.Name</h4>
                     <div class="details-section m-2 p-2 mt-4 border-top border-bottom">
                         <p>Date: @Model.Date.ToString("dd'/'MM'/'yyyy")</p>
-                        <p>Location: @Model.Location.Name <span id="map-toggle">see on map</span></p> 
+                        <p>Location: @Model.Location.Name <span id="map-toggle">see on map</span></p>
                     </div>
 
                     <div class="buy-section p-2">
                         <select id="type-picker">
-                            @foreach(var type in Model.TicketClasses)
+                            @foreach (var type in Model.TicketClasses)
                             {
-                            <option value="@type.Id">@type.AreaName - @type.Price RON</option>
+                                <option value="@type.Id">@type.AreaName - @type.Price RON</option>
                             }
                         </select>
                         <label id="ticket-nr-label">Number of tickets:</label>
@@ -53,18 +53,37 @@
             </div>
         </div>
         <div id="map-global-container">
-            <div id="background-shadow"></div>
-            <div id="map-popup">
-                <div id="close-map-button">X</div>
+            <div class="background-shadow"></div>
+            <div id="close-map" class="event-popup">
+                <div class="close-popup-button">X</div>
                 <div id="map-container">
                     <div id="event-map"></div>
                 </div>
             </div>
         </div>
+        <div id="confirm-purchase-global-container">
+            <div class="background-shadow"></div>
+            <div class="event-popup">
+                <div id="close-purchase" class="close-popup-button">X</div>
+                <h4 id="confirm-header" class="main-text">Your purchase details:</h4>
+                <div id="confirm-message"></div><span id="popup-price-tag"></span>
+                <div id="purchase-success-message">Purchase successful!</div>
+                <div id="purchase-error-message">There was a problem in registering your purchase.</div>
+                <button id="confirm-button" class="btn btn-primary">Confirm</button>
+                <img id="loading-spinner" src="~/img/spinner.gif" />
+                <div id="popup-price-total"></div>
+                <div id="success-buttons">
+                    <button id="home-button" class="btn btn-secondary" onclick="location.href='/'">Go to Home Page</button>
+                    <button id="tickets-button" class="btn btn-primary" onclick="location.href='/account/tickets'">View Tickets</button>
+                </div>
+            </div>
+        </div>
+
         <script>
             var optionsList = [];
+            var eventName = "@Model.Name";
             @foreach(var type in Model.TicketClasses){
-                <text>optionsList.push({ id: @type.Id, price: @type.Price, ticketsLeft: @type.TicketsRemaining});</text>
+                <text>optionsList.push({ id: @type.Id, price: @type.Price, ticketsLeft: @type.TicketsRemaining, areaName: "@type.AreaName"});</text>
             }
             var locationData = @Html.Raw(Json.Serialize(Model.Location));
         </script>

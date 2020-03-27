@@ -29,12 +29,12 @@ namespace iNeedTickets.Services
                 .ThenInclude(e => e.Location)
                 .First(e => e.Id == purchaseData.TicketTypeId);
 
-            var ticketGuid = Guid.NewGuid();
-
             if (eventClass.TicketsRemaining >= purchaseData.TicketsCount)
             {
                 for (var i = 0; i < purchaseData.TicketsCount; i++)
                 {
+                    var ticketGuid = Guid.NewGuid();
+
                     ticketList.Add(new Ticket {
                         TicketClassRef = eventClass,
                         UserRef = currentUser,

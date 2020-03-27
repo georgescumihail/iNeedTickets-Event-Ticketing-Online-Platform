@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using System.Drawing;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace iNeedTickets.Controllers
 {
@@ -14,12 +17,17 @@ namespace iNeedTickets.Controllers
         private UserManager<User> _userManager;
         private SignInManager<User> _signInManager;
         private ITicketRepository _ticketRepository;
+        private IHostingEnvironment _hostingEnvironment;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, ITicketRepository ticketRepository)
+        public AccountController(UserManager<User> userManager,
+            SignInManager<User> signInManager,
+            ITicketRepository ticketRepository,
+            IHostingEnvironment hostingEnvironment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _ticketRepository = ticketRepository;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         [AllowAnonymous]
@@ -104,6 +112,14 @@ namespace iNeedTickets.Controllers
             var selectedTicket = _ticketRepository.GetTicketById(id);
 
             return View(selectedTicket);
+        }
+
+        public IActionResult TicketPhoto(string fileName)
+        {
+
+            var path = _hostingEnvironment.ContentRootPath + "\\Images\\Tickets\\" + fileName;
+
+            return base.PhysicalFile(path, "image/jpeg");
         }
     }
 }
