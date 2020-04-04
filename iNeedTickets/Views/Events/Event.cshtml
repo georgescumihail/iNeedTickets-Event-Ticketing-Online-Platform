@@ -16,7 +16,7 @@
 
             <div class="top-wrapper">
                 <div class="image-wrapper">
-                    <img class="event-banner" src="~/img/@Model.PhotoLink" alt="Event banner" />
+                    <img class="event-banner" src="@Url.Action("EventPhoto", "Image", new { fileName = Model.PhotoLink })" alt="Ticket Image" />
                 </div>
                 <div class="details-wrapper">
                     <h4 class="ml-3">@Model.Name</h4>
@@ -70,7 +70,7 @@
                 <div id="purchase-success-message">Purchase successful!</div>
                 <div id="purchase-error-message">There was a problem in registering your purchase.</div>
                 <button id="confirm-button" class="btn btn-primary">Confirm</button>
-                <img id="loading-spinner" src="~/img/spinner.gif" />
+                <img id="loading-spinner" src="~/img/res/spinner.gif" />
                 <div id="popup-price-total"></div>
                 <div id="success-buttons">
                     <button id="home-button" class="btn btn-secondary" onclick="location.href='/'">Go to Home Page</button>

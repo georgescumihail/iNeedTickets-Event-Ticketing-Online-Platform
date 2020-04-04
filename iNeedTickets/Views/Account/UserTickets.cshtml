@@ -18,12 +18,18 @@
             {
                 <h4 class="main-text">Your purchased tickets:</h4>
                 <div id="ticket-list-container">
-                    @foreach (var ticket in Model)
-                    {
-                        <a class="ticket-link" href="/account/ticket/@ticket.Id">
-                            @ticket.TicketClassRef.EventRef.Name - @ticket.TicketClassRef.AreaName - @ticket.TicketClassRef.EventRef.Date
-                        </a>
-                    }
+                    <table id="tickets-table" class="table-responsive table-bordered table-striped table-hover">
+                        @foreach (var ticket in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a class="ticket-link" href="/account/ticket/@ticket.Id">
+                                        @ticket.TicketClassRef.EventRef.Name - @ticket.TicketClassRef.AreaName - @ticket.TicketClassRef.EventRef.Date
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                        </table>
                 </div>
             }
             else

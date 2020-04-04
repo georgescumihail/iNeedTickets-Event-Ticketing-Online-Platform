@@ -11,9 +11,9 @@
     </head>
     <body>
         <h4 id="ticket-details-header" class="main-text">Ticket details:</h4>
-        <a id="download-link" href="@Url.Action("TicketPhoto", "Account", new { fileName = Model.FileName })" download="@Model.FileName">
+        <a id="download-link" href="@Url.Action("TicketPhoto", "Image", new { fileName = Model.FileName })" download="@Model.FileName">
             Click here to download the ticket
         </a>
-        <img id="ticket-image" src="@Url.Action("TicketPhoto", "Account", new { fileName = Model.FileName })" alt="Ticket Image" />
+        <img id="ticket-image" src="@Url.Action("TicketPhoto", "Image", new { fileName = Model.FileName })" alt="Ticket Image" />
     </body>
 </html>

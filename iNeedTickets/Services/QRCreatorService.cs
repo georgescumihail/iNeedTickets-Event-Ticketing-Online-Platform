@@ -13,10 +13,12 @@ namespace iNeedTickets.Services
         public Bitmap Generate(Ticket ticket)
         {
             var qrGenerator = new QRCodeGenerator();
-            var qrCodeData = qrGenerator.CreateQrCode($"{ ticket.TicketClassRef.EventRef.Name}" +
+
+            var qrText = $"{ ticket.TicketClassRef.EventRef.Name}" +
                 $"-{ticket.TicketClassRef.EventRef.Location.Name}" +
-                $"-{ticket.EncryptionPath.ToString()}",
-                QRCodeGenerator.ECCLevel.Q);
+                $"-{ticket.EncryptionPath.ToString()}".Replace(" ", "-");
+
+            var qrCodeData = qrGenerator.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q);
             var qrCode = new QRCode(qrCodeData);
             var qrCodeImage = qrCode.GetGraphic(20);
 

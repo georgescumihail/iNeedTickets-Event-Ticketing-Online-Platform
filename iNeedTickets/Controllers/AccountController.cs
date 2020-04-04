@@ -17,17 +17,17 @@ namespace iNeedTickets.Controllers
         private UserManager<User> _userManager;
         private SignInManager<User> _signInManager;
         private ITicketRepository _ticketRepository;
-        private IHostingEnvironment _hostingEnvironment;
+        private RoleManager<IdentityRole> _roleManager;
 
         public AccountController(UserManager<User> userManager,
             SignInManager<User> signInManager,
             ITicketRepository ticketRepository,
-            IHostingEnvironment hostingEnvironment)
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _ticketRepository = ticketRepository;
-            _hostingEnvironment = hostingEnvironment;
+            _roleManager = roleManager;
         }
 
         [AllowAnonymous]
@@ -66,6 +66,13 @@ namespace iNeedTickets.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] SignupModel data)
         {
+            var isUserRole = await _roleManager.RoleExistsAsync("User");
+
+            if (!isUserRole)
+            {
+                await _roleManager.CreateAsync(new IdentityRole("User"));
+            }
+
             var newUser = new User
             {
                 Email = data.Email,
@@ -73,6 +80,7 @@ namespace iNeedTickets.Controllers
             };
 
             var result = await _userManager.CreateAsync(newUser, data.Password);
+            await _userManager.AddToRoleAsync(newUser, "User");
 
             if (result.Succeeded)
             {
@@ -112,14 +120,6 @@ namespace iNeedTickets.Controllers
             var selectedTicket = _ticketRepository.GetTicketById(id);
 
             return View(selectedTicket);
-        }
-
-        public IActionResult TicketPhoto(string fileName)
-        {
-
-            var path = _hostingEnvironment.ContentRootPath + "\\Images\\Tickets\\" + fileName;
-
-            return base.PhysicalFile(path, "image/jpeg");
         }
     }
 }

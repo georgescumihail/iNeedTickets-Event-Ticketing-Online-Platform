@@ -3,6 +3,20 @@
     padding:20px;
 }
 
+.main-text {
+    margin-left: 30px;
+}
+
+#tickets-table {
+    margin: 30px auto;
+    width: 80%;
+}
+
+#tickets-table tbody {
+    width: 100%;
+    display: table;
+}
+
 .ticket-link {
     display: block;
     margin: 20px;

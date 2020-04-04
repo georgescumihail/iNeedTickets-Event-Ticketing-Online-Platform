@@ -27,7 +27,7 @@
                         <div class="event-wrapper border text-center mx-2 my-3">
                             <div class="event-hover-shadow" onclick="handleEventClick(@e.Id)"></div>
                             <a href="/events/event/@e.Id">
-                                <img class="event-banner mb-1" src="~/img/@e.PhotoLink" alt="Event banner" />
+                                <img class="event-banner mb-1" src="@Url.Action("EventPhoto", "Image", new { fileName = e.PhotoLink })" alt="Ticket Image" />
                             </a>
                             <a class="event-title" href="/events/event/@e.Id">@e.Name</a>
                             <p class="event-date">@e.Date.ToString("dd'/'MM'/'yyyy")</p>
@@ -46,7 +46,7 @@
                     <div class="event-wrapper border text-center mx-2 my-3">
                         <div class="event-hover-shadow" onclick="handleEventClick(@e.Id)"></div>
                         <a href="/events/event/@e.Id">
-                            <img class="event-banner mb-1" src="~/img/@e.PhotoLink" alt="Event banner" />
+                            <img class="event-banner mb-1" src="@Url.Action("EventPhoto", "Image", new { fileName = e.PhotoLink })" alt="Ticket Image" />
                         </a>
                         <a class="event-title" href="/events/event/@e.Id">@e.Name</a>
                         <p class="event-date">@e.Date.ToString("dd'/'MM'/'yyyy")</p>
@@ -64,7 +64,7 @@
                     <div class="event-wrapper border text-center mx-2 my-3">
                         <div class="event-hover-shadow" onclick="handleEventClick(@e.Id)"></div>
                         <a href="/events/event/@e.Id">
-                            <img class="event-banner mb-1" src="~/img/@e.PhotoLink" alt="Event banner" />
+                            <img class="event-banner mb-1" src="@Url.Action("EventPhoto", "Image", new { fileName = e.PhotoLink })" alt="Ticket Image" />
                         </a>
                         <a class="event-title" href="/events/event/@e.Id">@e.Name</a>
                         <p class="event-date">@e.Date.ToString("dd'/'MM'/'yyyy")</p>
@@ -82,7 +82,7 @@
                     <div class="event-wrapper border text-center mx-2 my-3">
                         <div class="event-hover-shadow" onclick="handleEventClick(@e.Id)"></div>
                         <a href="/events/event/@e.Id">
-                            <img class="event-banner mb-1" src="~/img/@e.PhotoLink" alt="Event banner" />
+                            <img class="event-banner mb-1" src="@Url.Action("EventPhoto", "Image", new { fileName = e.PhotoLink })" alt="Ticket Image" />
                         </a>
                         <a class="event-title" href="/events/event/@e.Id">@e.Name</a>
                         <p class="event-date">@e.Date.ToString("dd'/'MM'/'yyyy")</p>

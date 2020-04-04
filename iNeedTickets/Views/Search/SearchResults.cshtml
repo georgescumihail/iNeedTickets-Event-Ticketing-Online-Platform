@@ -17,7 +17,9 @@
             {
             <div class="search-event border-bottom">
                 <div class="photo-wrapper">
-                    <a href="/events/event/@e.Id"><img class="event-photo" src="~/img/@e.PhotoLink" alt="Event photo" /></a>
+                    <a href="/events/event/@e.Id">
+                        <img class="event-photo" src="@Url.Action("EventPhoto", "Image", new { fileName = e.PhotoLink })" alt="Ticket Image" />
+                    </a>
                 </div>
                 <div class="event-details">
                     <a class="event-title" href="/events/event/@e.Id">@e.Name</a>

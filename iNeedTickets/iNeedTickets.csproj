@@ -5,6 +5,21 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="Images\Events\artificial.jpg" />
+    <Content Include="Images\Events\fotbal.jpg" />
+    <Content Include="Images\Events\handbal.png" />
+    <Content Include="Images\Events\metallica.jpeg" />
+    <Content Include="Images\Events\painting.jpg" />
+    <Content Include="Images\Events\quantic.jpg" />
+    <Content Include="Images\Events\rammstein.jpg" />
+    <Content Include="Images\Events\standup1.jpg" />
+    <Content Include="Images\Events\standup2.jpg" />
+    <Content Include="Images\Events\subcarpati.jpg" />
+    <Content Include="Images\Events\teatru1.jpg" />
+    <Content Include="Images\Events\teatru2.jpg" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -15,6 +30,10 @@
 
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\" />
     <Folder Include="Images\Tickets\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
