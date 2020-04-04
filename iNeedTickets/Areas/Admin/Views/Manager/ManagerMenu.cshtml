@@ -1,0 +1,30 @@
+﻿@model List<iNeedTickets.Models.Event>
+
+
+@{
+    ViewData["Title"] = "ManagerMenu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <link href="~/css/manager.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="manage-page">
+        <h4 class="main-text">Events management</h4>
+        <div id="events-table-container">
+            <table id="events-table" class="table-responsive table-bordered table-striped table-hover">
+                @foreach (var e in Model)
+                {
+                    <tr onclick="handleTableClick(@e.Id)" id="@("event-"+e.Id.ToString() )">
+                        <td>@e.Name</td>
+                        <td>@e.Location.Name</td>
+                        <td>@e.Date</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <button class="btn btn-primary">Add new event</button>
+    </div>
+</body>
+</html>

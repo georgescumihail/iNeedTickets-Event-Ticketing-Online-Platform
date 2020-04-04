@@ -1,0 +1,29 @@
+﻿
+#manage-page {
+    padding: 20px;
+}
+
+.main-text {
+    margin-left: 30px;
+}
+
+#events-table-container {
+    height: 400px;
+    overflow-y: auto;
+    margin: 30px auto;
+    width: 90%;
+}
+
+#events-table {
+    border: 2px solid #dee2e6;
+}
+
+#events-table tbody {
+    width: 100%;
+    display: table;
+    cursor: pointer; 
+}
+
+#events-table td {
+    padding: 10px;
+}

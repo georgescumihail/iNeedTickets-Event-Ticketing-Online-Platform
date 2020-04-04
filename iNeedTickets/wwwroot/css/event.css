@@ -38,6 +38,7 @@
 
 .bottom-event-wrapper {
     margin-top: 20px;
+    margin-bottom: 60px;
 }
 
 #type-picker {
@@ -166,6 +167,15 @@
     left: 60px;
 }
 
+#popup-price-tag {
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    position: absolute;
+    top: 100px;
+    right: 120px;
+}
+
 #confirm-button {
     position: absolute;
     bottom: 40px;
@@ -203,15 +213,6 @@
     color: #ff6677;
 }
 
-#popup-price-tag {
-    font-size: 16px;
-    font-weight: bold;
-    display: inline-block;
-    position: absolute;
-    top: 100px;
-    right: 120px;
-}
-
 #popup-price-total {
     font-size: 16px;
     font-weight: bold;
@@ -240,6 +241,54 @@
     .event-popup {
         width: 300px;
         height: 200px;
+    }
+
+    #confirm-header {
+        font-size: 16px;
+        top: 15px;
+        left: 20px;
+    }
+
+    #confirm-message {
+        font-size: 14px;
+        top: 40px;
+        left: 20px;
+    }
+
+    #popup-price-tag {
+        top: 60px;
+        right: 25px;
+    }
+
+    #confirm-button {
+        bottom: 10px;
+        right: 15px;
+    }
+
+    #loading-spinner {
+        bottom: 10px;
+        right: 5px;
+    }
+
+    #success-buttons {
+        bottom: 10px;
+        right: 15px;
+    }
+
+    #purchase-success-message {
+        font-size: 14px;
+        bottom: 45px;
+        right: 10px;
+    }
+
+    #purchase-error-message {
+        bottom: 25px;
+        right: 20px;
+    }
+
+    #popup-price-total {
+        top: 110px;
+        left: 20px;
     }
 
     /*for mobile only*/ 
