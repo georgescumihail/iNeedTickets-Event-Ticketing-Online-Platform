@@ -24,8 +24,8 @@ namespace iNeedTickets.Services
         {
             var ticketList = new List<Ticket>();
 
-            var eventClass = dbContext.TicketTypes
-                .Include(t => t.EventRef)
+            var eventClass = dbContext.TicketAreas
+                .Include(t => t.Event)
                 .ThenInclude(e => e.Location)
                 .First(e => e.Id == purchaseData.TicketTypeId);
 
@@ -36,10 +36,10 @@ namespace iNeedTickets.Services
                     var ticketGuid = Guid.NewGuid();
 
                     ticketList.Add(new Ticket {
-                        TicketClassRef = eventClass,
-                        UserRef = currentUser,
+                        TicketArea = eventClass,
+                        User = currentUser,
                         EncryptionPath = ticketGuid,
-                        FileName = $"ticket-{eventClass.EventRef.Name}-{ticketGuid}.jpg".Replace(" ", "-")
+                        FileName = $"ticket-{eventClass.Event.Name}-{ticketGuid}.jpg".Replace(" ", "-")
                     });
                 }
 

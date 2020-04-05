@@ -14,7 +14,7 @@ namespace iNeedTickets.Controllers
 
         public IActionResult Concerts()
         {
-            var selectedEvents = _eventsRepository.GetEventsByType(EventType.Concerts);
+            var selectedEvents = _eventsRepository.GetEventsByType(EventCategory.Concerts);
 
             ViewData.Add("CategoryName", "Concerts");
             return View("CategoryView", selectedEvents);
@@ -22,7 +22,7 @@ namespace iNeedTickets.Controllers
 
         public IActionResult Theatre()
         {
-            var selectedEvents = _eventsRepository.GetEventsByType(EventType.Theatre);
+            var selectedEvents = _eventsRepository.GetEventsByType(EventCategory.Theatre);
 
             ViewData.Add("CategoryName", "Theatre");
             return View("CategoryView", selectedEvents);
@@ -30,7 +30,7 @@ namespace iNeedTickets.Controllers
 
         public IActionResult Sports()
         {
-            var selectedEvents = _eventsRepository.GetEventsByType(EventType.Sports);
+            var selectedEvents = _eventsRepository.GetEventsByType(EventCategory.Sports);
 
             ViewData.Add("CategoryName", "Sports");
             return View("CategoryView", selectedEvents);
@@ -38,7 +38,7 @@ namespace iNeedTickets.Controllers
 
         public IActionResult Standup()
         {
-            var selectedEvents = _eventsRepository.GetEventsByType(EventType.Standup);
+            var selectedEvents = _eventsRepository.GetEventsByType(EventCategory.Standup);
 
             ViewData.Add("CategoryName", "Standup");
             return View("CategoryView", selectedEvents);
@@ -46,7 +46,7 @@ namespace iNeedTickets.Controllers
 
         public IActionResult Art()
         {
-            var selectedEvents = _eventsRepository.GetEventsByType(EventType.Art);
+            var selectedEvents = _eventsRepository.GetEventsByType(EventCategory.Art);
 
             ViewData.Add("CategoryName", "Art");
             return View("CategoryView", selectedEvents);

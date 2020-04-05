@@ -44,6 +44,8 @@ namespace iNeedTickets
             services.AddTransient<IPurchaseService, PurchaseService>();
             services.AddTransient<IQRCreatorService, QRCreatorService>();
             services.AddTransient<ITicketImageService, TicketImageService>();
+            services.AddTransient<ILocationService, LocationService>();
+            services.AddTransient<IEventService, EventService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

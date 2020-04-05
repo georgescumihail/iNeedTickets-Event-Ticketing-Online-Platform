@@ -1,0 +1,25 @@
+﻿@model iNeedTickets.Models.Event
+
+@{
+    ViewData["Title"] = "EditEvent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <link href="~/css/admin/edit-event.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="edit-event-page">
+        <h4 class="main-text">Edit event @Model.Name</h4>
+        <button id="delete-event" class="btn btn-danger">Delete</button>
+    </div>
+
+    <script>
+        var eventId = @Model.Id;
+    </script>
+    <script src="~/js/edit-event.js"></script>
+</body>
+</html>
+
+

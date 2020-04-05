@@ -1,7 +1,7 @@
 ﻿
 namespace iNeedTickets.Models
 {
-    public enum EventType
+    public enum EventCategory
     {
         Concerts = 1,
         Theatre = 2,

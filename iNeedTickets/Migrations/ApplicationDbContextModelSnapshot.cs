@@ -183,20 +183,20 @@ namespace iNeedTickets.Migrations
 
                     b.Property<string>("FileName");
 
-                    b.Property<int?>("TicketClassRefId");
+                    b.Property<int?>("TicketAreaId");
 
-                    b.Property<string>("UserRefId");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TicketClassRefId");
+                    b.HasIndex("TicketAreaId");
 
-                    b.HasIndex("UserRefId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Tickets");
                 });
 
-            modelBuilder.Entity("iNeedTickets.Models.TicketClass", b =>
+            modelBuilder.Entity("iNeedTickets.Models.TicketArea", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -204,7 +204,7 @@ namespace iNeedTickets.Migrations
 
                     b.Property<string>("AreaName");
 
-                    b.Property<int?>("EventRefId");
+                    b.Property<int?>("EventId");
 
                     b.Property<float>("Price");
 
@@ -214,9 +214,9 @@ namespace iNeedTickets.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventRefId");
+                    b.HasIndex("EventId");
 
-                    b.ToTable("TicketTypes");
+                    b.ToTable("TicketAreas");
                 });
 
             modelBuilder.Entity("iNeedTickets.Models.User", b =>
@@ -324,20 +324,20 @@ namespace iNeedTickets.Migrations
 
             modelBuilder.Entity("iNeedTickets.Models.Ticket", b =>
                 {
-                    b.HasOne("iNeedTickets.Models.TicketClass", "TicketClassRef")
+                    b.HasOne("iNeedTickets.Models.TicketArea", "TicketArea")
                         .WithMany()
-                        .HasForeignKey("TicketClassRefId");
+                        .HasForeignKey("TicketAreaId");
 
-                    b.HasOne("iNeedTickets.Models.User", "UserRef")
+                    b.HasOne("iNeedTickets.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserRefId");
+                        .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("iNeedTickets.Models.TicketClass", b =>
+            modelBuilder.Entity("iNeedTickets.Models.TicketArea", b =>
                 {
-                    b.HasOne("iNeedTickets.Models.Event", "EventRef")
-                        .WithMany("TicketClasses")
-                        .HasForeignKey("EventRefId");
+                    b.HasOne("iNeedTickets.Models.Event", "Event")
+                        .WithMany("TicketAreas")
+                        .HasForeignKey("EventId");
                 });
 #pragma warning restore 612, 618
         }

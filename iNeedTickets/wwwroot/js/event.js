@@ -1,6 +1,6 @@
 ﻿//price display
 
-var typePicker = document.getElementById("type-picker");
+var areaPicker = document.getElementById("area-picker");
 var numberPicker = document.getElementById("number-picker");
 var priceValueField = document.getElementById("total-price-value");
 var priceRow = document.getElementById("total-price");
@@ -8,9 +8,9 @@ var ticketsAlert = document.getElementById("tickets-alert");
 var buyButton = document.getElementById("buy-button");
 var spinner = document.getElementById("loading-spinner");
 
-var selectedTicketsNo = numberPicker.options[typePicker.selectedIndex].value;
+var selectedTicketsNo = numberPicker.options[numberPicker.selectedIndex].value;
 
-var selectedType;
+var selectedArea;
 var selectedPrice;
 var selectedName;
 var totalPrice;
@@ -18,7 +18,7 @@ var isConfirmPopupOpen = false;
 
 updateDetails();
 
-typePicker.addEventListener("change", e => {
+areaPicker.addEventListener("change", e => {
     selectedPrice = e.target.value;
     updateDetails();
 });
@@ -29,10 +29,10 @@ numberPicker.addEventListener("change", e => {
 });
 
 function updateDetails() {
-    selectedType = typePicker.options[typePicker.selectedIndex].value;
-    selectedPrice = optionsList.find(o => o.id == selectedType).price;
-    selectedName = optionsList.find(o => o.id == selectedType).areaName;
-    ticketsLeft = optionsList.find(o => o.id == selectedType).ticketsLeft;
+    selectedArea = areaPicker.options[areaPicker.selectedIndex].value;
+    selectedPrice = optionsList.find(o => o.id == selectedArea).price;
+    selectedName = optionsList.find(o => o.id == selectedArea).areaName;
+    ticketsLeft = optionsList.find(o => o.id == selectedArea).ticketsLeft;
 
     if (ticketsLeft == 0) {
         ticketsAlert.innerText = `No tickets left!`;
@@ -78,11 +78,16 @@ function updatePrice() {
 }
 
 buyButton.addEventListener("click", () => {
-    isConfirmPopupOpen = true;
-    document.getElementById("confirm-purchase-global-container").style.display = "block";
-    document.getElementById("confirm-message").innerText = `${selectedTicketsNo} x ${eventName} - ${selectedName}`;
-    document.getElementById("popup-price-tag").innerText = `${selectedPrice} lei`;
-    document.getElementById("popup-price-total").innerText = `Total price: ${totalPrice} lei`;
+    if (isUserLoggedIn) {
+        isConfirmPopupOpen = true;
+        document.getElementById("confirm-purchase-global-container").style.display = "block";
+        document.getElementById("confirm-message").innerText = `${selectedTicketsNo} x ${eventName} - ${selectedName}`;
+        document.getElementById("popup-price-tag").innerText = `${selectedPrice} lei`;
+        document.getElementById("popup-price-total").innerText = `Total price: ${totalPrice} lei`;
+    }
+    else {
+        redirectToLogin();
+    }
 });
 
 document.getElementById("confirm-button")
@@ -95,7 +100,7 @@ document.getElementById("confirm-button")
             headers: { "Content-type": "application/json" },
             credentials: 'include',
             body: JSON.stringify({
-                ticketTypeId: selectedType,
+                ticketTypeId: selectedArea,
                 ticketsCount: selectedTicketsNo
             })
         })

@@ -14,10 +14,10 @@ namespace iNeedTickets.Models
 
         public string Description { get; set; }
 
-        public EventType EventType { get; set; }
+        public EventCategory EventType { get; set; }
 
         public string PhotoLink { get; set; }
 
-        public ICollection<TicketClass> TicketClasses { get; set; }
+        public ICollection<TicketArea> TicketAreas { get; set; }
     }
 }

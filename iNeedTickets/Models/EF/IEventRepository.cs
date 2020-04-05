@@ -13,7 +13,7 @@ namespace iNeedTickets.Models
 
         IQueryable<Event> GetEventsByQuery(string query);
 
-        IQueryable<Event> GetEventsByType(EventType eventType, int selectionSize = 8);
+        IQueryable<Event> GetEventsByType(EventCategory eventType, int selectionSize = 8);
 
         IQueryable<Event> GetClosestUpcomingEvents(int selectionSize);
     }

@@ -1,7 +1,7 @@
 ﻿
 namespace iNeedTickets.Models
 {
-    public class TicketClass
+    public class TicketArea
     {
         public int Id { get; set; }
 
@@ -13,6 +13,6 @@ namespace iNeedTickets.Models
 
         public int TicketsRemaining { get; set; }
 
-        public Event EventRef { get; set; }
+        public Event Event { get; set; }
     }
 }

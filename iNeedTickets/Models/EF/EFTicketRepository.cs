@@ -18,9 +18,9 @@ namespace iNeedTickets.Models
         public List<Ticket> GetTicketListByUser(string userRef)
         {
             return dbContext.Tickets
-                .Where(t => t.UserRef.Id == userRef)
-                .Include(t => t.TicketClassRef)
-                .ThenInclude(c => c.EventRef)
+                .Where(t => t.User.Id == userRef)
+                .Include(t => t.TicketArea)
+                .ThenInclude(c => c.Event)
                 .ToList();
         }
 
@@ -28,8 +28,8 @@ namespace iNeedTickets.Models
         {
             return dbContext.Tickets
                 .Where(t => t.Id == id)
-                .Include(t => t.TicketClassRef)
-                .ThenInclude(c => c.EventRef)
+                .Include(t => t.TicketArea)
+                .ThenInclude(c => c.Event)
                 .ThenInclude(e => e.Location)
                 .FirstOrDefault();
         }

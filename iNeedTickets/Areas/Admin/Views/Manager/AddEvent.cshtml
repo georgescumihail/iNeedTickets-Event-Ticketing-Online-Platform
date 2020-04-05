@@ -1,0 +1,74 @@
+﻿@model List<iNeedTickets.Models.Location>
+
+@{
+    ViewData["Title"] = "AddEvent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ var eventCategories = new Dictionary<int, string>()
+    {
+       {1, "Concerts" },
+       {2, "Theatre" },
+       {3, "Sports" },
+       {4, "Standup" },
+       {5, "Art" }
+    };
+}
+
+<html>
+<head>
+    <link href="~/css/admin/add-event.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="add-event-page">
+        <div id="event-details" class="border-right">
+            <h4 class="main-text">Add a new event:</h4>
+
+            <label class="form-label">Event name:</label>
+            <input id="name-field" type="text" class="form-element form-control" />
+
+            <label class="form-label">Date:</label>
+            <input id="date-field" type="date" class="form-element form-control" />
+
+            <label class="form-label">Location:</label>
+            <select id="location-field" class="form-element form-control">
+                @foreach (var location in Model)
+                {
+                    <option value="@location.Id">@location.Name</option>
+                }
+            </select>
+
+            <label class="form-label">Category:</label>
+            <select id="category-field" class="form-element form-control">
+                @foreach (var c in eventCategories)
+                {
+                    <option value="@c.Key">@c.Value</option>
+                }
+            </select>
+
+            <label class="form-label">Description:</label>
+            <textarea id="description-field" class="form-element form-control"></textarea>
+
+            <label class="form-label">Add an image:</label>
+            <input id="photo-field" type="file" accept="image/*" class="form-element form-control-file" />
+
+            <button id="add-event-button" class="btn btn-primary">Submit</button>
+            <div id="error-message"></div>
+        </div>
+        <div id="area-details">
+            <h4 class="main-text">Ticket areas:</h4>
+            <div id="types-container">
+                <div class="type-container">
+                    <span>Area 1:</span>
+                    <input type="text" id="area-name-1" class="area-details form-control" placeholder="Name" />
+                    <input type="number" id="area-price-1" class="area-details form-control" placeholder="Price" />
+                    <input type="number" id="area-capacity-1" class="area-details form-control" placeholder="Capacity" />
+                </div>
+            </div>
+            <button id="add-area" class="btn btn-primary">Add area</button>
+        </div>
+    </div>
+
+    <script src="~/js/add-event.js"></script>
+</body>
+</html>

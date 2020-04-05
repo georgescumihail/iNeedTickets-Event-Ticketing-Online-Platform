@@ -10,8 +10,8 @@ using iNeedTickets.Models;
 namespace iNeedTickets.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200321235309_TicketClassModelChanges")]
-    partial class TicketClassModelChanges
+    [Migration("20200405145017_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -181,16 +181,24 @@ namespace iNeedTickets.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EventClassRef");
+                    b.Property<Guid>("EncryptionPath");
 
-                    b.Property<int>("UserRef");
+                    b.Property<string>("FileName");
+
+                    b.Property<int?>("TicketAreaId");
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TicketAreaId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Tickets");
                 });
 
-            modelBuilder.Entity("iNeedTickets.Models.TicketClass", b =>
+            modelBuilder.Entity("iNeedTickets.Models.TicketArea", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -198,7 +206,7 @@ namespace iNeedTickets.Migrations
 
                     b.Property<string>("AreaName");
 
-                    b.Property<int?>("EventRefId");
+                    b.Property<int?>("EventId");
 
                     b.Property<float>("Price");
 
@@ -208,9 +216,9 @@ namespace iNeedTickets.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventRefId");
+                    b.HasIndex("EventId");
 
-                    b.ToTable("TicketTypes");
+                    b.ToTable("TicketAreas");
                 });
 
             modelBuilder.Entity("iNeedTickets.Models.User", b =>
@@ -316,11 +324,22 @@ namespace iNeedTickets.Migrations
                         .HasForeignKey("LocationId");
                 });
 
-            modelBuilder.Entity("iNeedTickets.Models.TicketClass", b =>
+            modelBuilder.Entity("iNeedTickets.Models.Ticket", b =>
                 {
-                    b.HasOne("iNeedTickets.Models.Event", "EventRef")
-                        .WithMany("TicketClasses")
-                        .HasForeignKey("EventRefId");
+                    b.HasOne("iNeedTickets.Models.TicketArea", "TicketArea")
+                        .WithMany()
+                        .HasForeignKey("TicketAreaId");
+
+                    b.HasOne("iNeedTickets.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("iNeedTickets.Models.TicketArea", b =>
+                {
+                    b.HasOne("iNeedTickets.Models.Event", "Event")
+                        .WithMany("TicketAreas")
+                        .HasForeignKey("EventId");
                 });
 #pragma warning restore 612, 618
         }

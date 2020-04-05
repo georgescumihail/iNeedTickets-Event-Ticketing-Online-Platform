@@ -8,9 +8,9 @@ namespace iNeedTickets.Models
 
         public Guid EncryptionPath { get; set; }
 
-        public User UserRef { get; set; }
+        public User User { get; set; }
 
-        public TicketClass TicketClassRef { get; set; }
+        public TicketArea TicketArea { get; set; }
 
         public string FileName { get; set; }
     }

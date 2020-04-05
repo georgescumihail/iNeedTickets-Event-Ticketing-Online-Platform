@@ -27,3 +27,8 @@
 #events-table td {
     padding: 10px;
 }
+
+#add-button {
+    margin-left: 60px;
+    margin-top: 5px;
+}

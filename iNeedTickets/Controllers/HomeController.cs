@@ -23,8 +23,8 @@ namespace iNeedTickets.Controllers
             return View(new MainPageModel
             {
                 UpcomingEvents = _eventsRepository.GetClosestUpcomingEvents(UPCOMING_SIZE).ToList(),
-                ConcertEvents = _eventsRepository.GetEventsByType(EventType.Concerts).ToList(),
-                TheatreEvents = _eventsRepository.GetEventsByType(EventType.Theatre).ToList(),
+                ConcertEvents = _eventsRepository.GetEventsByType(EventCategory.Concerts).ToList(),
+                TheatreEvents = _eventsRepository.GetEventsByType(EventCategory.Theatre).ToList(),
                 RecommendedEvents = _eventsRepository.GetClosestUpcomingEvents(4).ToList() // to be implemented
             });
         }
