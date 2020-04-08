@@ -16,7 +16,7 @@ namespace iNeedTickets.Services
 
             var qrText = $"{ ticket.TicketArea.Event.Name}" +
                 $"-{ticket.TicketArea.Event.Location.Name}" +
-                $"-{ticket.EncryptionPath.ToString()}".Replace(" ", "-");
+                $"-{ticket.EncryptionCode.ToString()}".Replace(" ", "-");
 
             var qrCodeData = qrGenerator.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q);
             var qrCode = new QRCode(qrCodeData);

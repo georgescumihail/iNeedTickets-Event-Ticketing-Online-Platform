@@ -57,8 +57,10 @@ namespace iNeedTickets.Services
                 {
                     TicketArea = area,
                     User = user,
-                    EncryptionPath = ticketGuid,
-                    FileName = $"ticket-{area.Event.Name}-{ticketGuid}.jpg".Replace(" ", "-")
+                    EncryptionCode = ticketGuid,
+                    FileName = $"ticket-{area.Event.Name}-{ticketGuid}.jpg".Replace(" ", "-"),
+                    IsActive = true,
+                    PurchaseDate = DateTime.Now
                 });
             }
 

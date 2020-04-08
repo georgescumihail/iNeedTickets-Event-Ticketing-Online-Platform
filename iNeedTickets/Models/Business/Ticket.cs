@@ -6,12 +6,16 @@ namespace iNeedTickets.Models
     {
         public int Id { get; set; }
 
-        public Guid EncryptionPath { get; set; }
+        public Guid EncryptionCode { get; set; }
 
         public User User { get; set; }
 
         public TicketArea TicketArea { get; set; }
 
         public string FileName { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public DateTime PurchaseDate { get; set; }
     }
 }
