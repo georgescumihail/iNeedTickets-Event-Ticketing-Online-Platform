@@ -39,6 +39,8 @@ namespace iNeedTickets
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.Configure<ServiceCredentials>(Configuration.GetSection("ServiceCredentials"));
+
             services.AddTransient<IEventRepository, EFEventRepository>();
             services.AddTransient<ITicketRepository, EFTicketRepository>();
             services.AddTransient<IPurchaseService, PurchaseService>();
@@ -46,6 +48,7 @@ namespace iNeedTickets
             services.AddTransient<ITicketImageService, TicketImageService>();
             services.AddTransient<ILocationService, LocationService>();
             services.AddTransient<IEventService, EventService>();
+            services.AddTransient<IEmailService, EmailService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
