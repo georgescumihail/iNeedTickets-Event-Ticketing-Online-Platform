@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using iNeedTickets.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace iNeedTickets.Models
+namespace iNeedTickets.Repos
 {
     public class EFEventRepository : IEventRepository
     {

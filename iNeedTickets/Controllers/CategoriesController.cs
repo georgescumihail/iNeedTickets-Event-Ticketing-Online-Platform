@@ -1,4 +1,5 @@
 ﻿using iNeedTickets.Models;
+using iNeedTickets.Repos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace iNeedTickets.Controllers

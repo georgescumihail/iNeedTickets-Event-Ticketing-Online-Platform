@@ -12,9 +12,18 @@ namespace iNeedTickets.Services
 {
     public class TicketImageService : ITicketImageService
     {
-        public void DrawImage(Ticket ticket, Bitmap qrCodeImage)
+        private IQRCreatorService _qrCreatorService;
+
+        public TicketImageService(IQRCreatorService qrCreatorService)
+        {
+            _qrCreatorService = qrCreatorService;
+        }
+
+        public void DrawImage(Ticket ticket)
         {
             var ticketImage = new Bitmap(595, 842);
+
+            var qrImage = _qrCreatorService.Generate(ticket);
 
             using (var graphics = Graphics.FromImage(ticketImage))
             {
@@ -29,7 +38,7 @@ namespace iNeedTickets.Services
                 graphics.DrawString($"Pret: {ticket.TicketArea.Price.ToString()} lei", new Font("Arial", 14), Brushes.Black, new PointF(30, 220));
                 graphics.DrawString($"{ticket.TicketArea.Event.Date} - {ticket.TicketArea.Event.Location.Name}", new Font("Arial", 14), Brushes.Black, new PointF(30, 260));
 
-                graphics.DrawImage(qrCodeImage, 120, 320, 350, 350);
+                graphics.DrawImage(qrImage, 120, 320, 350, 350);
             }
 
             var filePath = "./Images/Tickets/" + ticket.FileName;

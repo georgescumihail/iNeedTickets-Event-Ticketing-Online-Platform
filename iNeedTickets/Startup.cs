@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using iNeedTickets.Models;
 using Microsoft.AspNetCore.Identity;
 using iNeedTickets.Services;
+using iNeedTickets.Repos;
 
 namespace iNeedTickets
 {
@@ -43,6 +44,7 @@ namespace iNeedTickets
 
             services.AddTransient<IEventRepository, EFEventRepository>();
             services.AddTransient<ITicketRepository, EFTicketRepository>();
+            services.AddTransient<IAreaRepository, EFAreaRepository>();
             services.AddTransient<IPurchaseService, PurchaseService>();
             services.AddTransient<IQRCreatorService, QRCreatorService>();
             services.AddTransient<ITicketImageService, TicketImageService>();

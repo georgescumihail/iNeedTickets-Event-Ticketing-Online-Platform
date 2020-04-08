@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using iNeedTickets.Models;
+using System.Collections.Generic;
 
-namespace iNeedTickets.Models
+namespace iNeedTickets.Repos
 {
     public interface ITicketRepository
     {

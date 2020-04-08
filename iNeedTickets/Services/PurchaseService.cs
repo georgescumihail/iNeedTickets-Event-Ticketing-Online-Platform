@@ -1,4 +1,5 @@
 ﻿using iNeedTickets.Models;
+using iNeedTickets.Repos;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,64 +11,72 @@ namespace iNeedTickets.Services
     public class PurchaseService : IPurchaseService
     {
         private ApplicationDbContext dbContext;
-        private IQRCreatorService _qrCreatorService;
         private ITicketImageService _ticketImageService;
         private IEmailService _emailService;
+        private IAreaRepository _areaRepository;
 
-        public PurchaseService(ApplicationDbContext context, IQRCreatorService qrCreatorService,
-                                ITicketImageService ticketImageService, IEmailService emailService)
+        public PurchaseService(ApplicationDbContext context, ITicketImageService ticketImageService,
+                            IEmailService emailService, IAreaRepository areaRepository)
         {
             dbContext = context;
-            _qrCreatorService = qrCreatorService;
             _ticketImageService = ticketImageService;
             _emailService = emailService;
+            _areaRepository = areaRepository;
         }
 
         public bool RegisterPurchase(PurchaseModel purchaseData, User currentUser)
         {
-            var ticketList = new List<Ticket>();
+            var ticketArea = _areaRepository.GetFullAreaInfoById(purchaseData.TicketTypeId);
 
-            var ticketArea = dbContext.TicketAreas
-                .Include(t => t.Event)
-                .ThenInclude(e => e.Location)
-                .First(e => e.Id == purchaseData.TicketTypeId);
-
-            if (ticketArea.TicketsRemaining >= purchaseData.TicketsCount)
+            if (ticketArea != null && ticketArea.TicketsRemaining >= purchaseData.TicketsCount)
             {
-                for (var i = 0; i < purchaseData.TicketsCount; i++)
-                {
-                    var ticketGuid = Guid.NewGuid();
-
-                    ticketList.Add(new Ticket {
-                        TicketArea = ticketArea,
-                        User = currentUser,
-                        EncryptionPath = ticketGuid,
-                        FileName = $"ticket-{ticketArea.Event.Name}-{ticketGuid}.jpg".Replace(" ", "-")
-                    });
-                }
+                var ticketList = BuildTicketList(ticketArea, currentUser, purchaseData.TicketsCount);
 
                 dbContext.Tickets.AddRange(ticketList);
-
                 ticketArea.TicketsRemaining -= purchaseData.TicketsCount;
-
                 dbContext.SaveChanges();
 
-                var pathsList = new List<string>();
-
-                foreach (var ticket in ticketList) {
-
-                    var qrImage = _qrCreatorService.Generate(ticket);
-                    _ticketImageService.DrawImage(ticket, qrImage);
-
-                    pathsList.Add(ticket.FileName);
-                }
-
-                _emailService.SendEmail(currentUser, ticketArea, purchaseData, pathsList);
+                var paths = GenerateTickets(ticketList);
+                _emailService.SendEmail(currentUser, ticketArea, purchaseData, paths);
 
                 return true;
             }
 
             return false;
+        }
+
+        private List<Ticket> BuildTicketList(TicketArea area, User user, int ticketsNo)
+        {
+            var ticketList = new List<Ticket>();
+
+            for (var i = 0; i < ticketsNo; i++)
+            {
+                var ticketGuid = Guid.NewGuid();
+
+                ticketList.Add(new Ticket
+                {
+                    TicketArea = area,
+                    User = user,
+                    EncryptionPath = ticketGuid,
+                    FileName = $"ticket-{area.Event.Name}-{ticketGuid}.jpg".Replace(" ", "-")
+                });
+            }
+
+            return ticketList;
+        }
+
+        private List<string> GenerateTickets(List<Ticket> ticketList)
+        {
+            var pathsList = new List<string>();
+
+            foreach (var ticket in ticketList)
+            {
+                _ticketImageService.DrawImage(ticket);
+
+                pathsList.Add(ticket.FileName);
+            }
+
+            return pathsList;
         }
     }
 }

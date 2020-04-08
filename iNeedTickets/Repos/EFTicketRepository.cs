@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using iNeedTickets.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace iNeedTickets.Models
+namespace iNeedTickets.Repos
 {
     public class EFTicketRepository : ITicketRepository
     {

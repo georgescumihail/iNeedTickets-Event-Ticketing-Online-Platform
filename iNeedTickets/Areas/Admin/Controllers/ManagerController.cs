@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using iNeedTickets.Areas.Admin.Models;
 using iNeedTickets.Models;
+using iNeedTickets.Repos;
 using iNeedTickets.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

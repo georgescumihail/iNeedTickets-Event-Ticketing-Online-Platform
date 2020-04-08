@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Drawing;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using iNeedTickets.Repos;
 
 namespace iNeedTickets.Controllers
 {
