@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNeedTickets", "iNeedTickets\iNeedTickets.csproj", "{FC2187ED-2446-4111-A098-0A0A7F31E72B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iNeedTickets.API", "iNeedTickets.API\iNeedTickets.API.csproj", "{76B37A53-0B93-40E9-8904-377462062225}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNeedTickets.API", "iNeedTickets.API\iNeedTickets.API.csproj", "{76B37A53-0B93-40E9-8904-377462062225}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iNeedTickets.API.ScannerValidation", "iNeedTickets.API.ScannerValidation\iNeedTickets.API.ScannerValidation.csproj", "{24A4AE51-15D7-4BEA-92CD-B400BFE5E0A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNeedTickets.API.Scanner", "iNeedTickets.API.Scanner\iNeedTickets.API.Scanner.csproj", "{24A4AE51-15D7-4BEA-92CD-B400BFE5E0A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

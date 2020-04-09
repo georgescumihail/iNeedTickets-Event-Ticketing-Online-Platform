@@ -12,10 +12,27 @@ namespace iNeedTickets.API.Controllers
     [ApiController]
     public class EventsController : ControllerBase
     {
+        private IEventRepository _eventRepository;
+
+        public EventsController(IEventRepository eventRepository)
+        {
+            _eventRepository = eventRepository;
+        }
+
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok("API");
+            var eventsList = _eventRepository.GetAllUpcomingEvents().ToList();
+
+            return Ok(eventsList);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult Get(int id)
+        {
+            var selectedEvent = _eventRepository.GetEventById(id);
+
+            return Ok(selectedEvent);
         }
     }
 }
