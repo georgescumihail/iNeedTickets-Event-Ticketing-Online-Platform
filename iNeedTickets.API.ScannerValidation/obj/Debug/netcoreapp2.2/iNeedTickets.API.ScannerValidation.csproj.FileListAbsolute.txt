@@ -1,0 +1,14 @@
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\bin\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.deps.json
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\bin\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.runtimeconfig.json
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\bin\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.runtimeconfig.dev.json
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\bin\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.dll
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\bin\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.pdb
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\obj\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.csprojAssemblyReference.cache
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\obj\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.csproj.CoreCompileInputs.cache
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\obj\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.RazorAssemblyInfo.cache
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\obj\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.RazorAssemblyInfo.cs
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\obj\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.AssemblyInfoInputs.cache
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\obj\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.AssemblyInfo.cs
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\obj\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.RazorTargetAssemblyInfo.cache
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\obj\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.dll
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API.ScannerValidation\obj\Debug\netcoreapp2.2\iNeedTickets.API.ScannerValidation.pdb
