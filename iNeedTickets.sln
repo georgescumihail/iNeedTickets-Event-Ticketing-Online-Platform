@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNeedTickets", "iNeedTicket
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNeedTickets.API", "iNeedTickets.API\iNeedTickets.API.csproj", "{76B37A53-0B93-40E9-8904-377462062225}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNeedTickets.API.Scanner", "iNeedTickets.API.Scanner\iNeedTickets.API.Scanner.csproj", "{24A4AE51-15D7-4BEA-92CD-B400BFE5E0A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNeedTickets.Scanner.API", "iNeedTickets.Scanner.API\iNeedTickets.Scanner.API.csproj", "{24A4AE51-15D7-4BEA-92CD-B400BFE5E0A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

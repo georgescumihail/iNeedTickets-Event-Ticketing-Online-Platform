@@ -13054,11 +13054,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mihail\\Documents\\Git Repos\\iNeedTickets\\iNeedTickets.API.Scanner\\iNeedTickets.API.Scanner.csproj",
-      "projectName": "iNeedTickets.API.Scanner",
-      "projectPath": "C:\\Users\\Mihail\\Documents\\Git Repos\\iNeedTickets\\iNeedTickets.API.Scanner\\iNeedTickets.API.Scanner.csproj",
+      "projectUniqueName": "C:\\Users\\Mihail\\Documents\\Git Repos\\iNeedTickets\\iNeedTickets.Scanner.API\\iNeedTickets.Scanner.API.csproj",
+      "projectName": "iNeedTickets.Scanner.API",
+      "projectPath": "C:\\Users\\Mihail\\Documents\\Git Repos\\iNeedTickets\\iNeedTickets.Scanner.API\\iNeedTickets.Scanner.API.csproj",
       "packagesPath": "C:\\Users\\Mihail\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mihail\\Documents\\Git Repos\\iNeedTickets\\iNeedTickets.API.Scanner\\obj\\",
+      "outputPath": "C:\\Users\\Mihail\\Documents\\Git Repos\\iNeedTickets\\iNeedTickets.Scanner.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
