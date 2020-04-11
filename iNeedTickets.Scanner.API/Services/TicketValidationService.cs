@@ -25,53 +25,29 @@ namespace iNeedTickets.Scanner.API.Services
                 .ThenInclude(e => e.Location)
                 .FirstOrDefault(t => t.EncryptionCode == ticketCode);
 
-            if (ticket != null)
-            {
-                if (ticket.IsActive)
-                {
-                    var response = new TicketValidationResponseModel
-                    {
-                        IsValid = true,
-                        HasError = false,
-                        ErrorMessage = "",
-                        EventName = ticket.TicketArea.Event.Name,
-                        AreaName = ticket.TicketArea.AreaName,
-                        LocationName = ticket.TicketArea.Event.Location.Name,
-                        EventDate = ticket.TicketArea.Event.Date
-                    };
+            var response = BuildResponse(ticket);
 
-                    ticket.IsActive = false;
-                    dbContext.SaveChanges();
-
-                    return response;
-                }
-                else
-                {
-                    return new TicketValidationResponseModel
-                    {
-                        IsValid = false,
-                        HasError = false,
-                        ErrorMessage = "",
-                        EventName = ticket.TicketArea.Event.Name,
-                        AreaName = ticket.TicketArea.AreaName,
-                        LocationName = ticket.TicketArea.Event.Location.Name,
-                        EventDate = ticket.TicketArea.Event.Date
-                    };
-                }
-            }
-            else
+            if (ticket.IsActive)
             {
-                return new TicketValidationResponseModel
-                {
-                    IsValid = false,
-                    HasError = true,
-                    ErrorMessage = "The ticket was not found",
-                    EventName = "",
-                    AreaName = "",
-                    LocationName = "",
-                    EventDate = null
-                };
+                ticket.IsActive = false;
+                dbContext.SaveChanges();
             }
+
+            return response;
+        }
+
+        private TicketValidationResponseModel BuildResponse(Ticket ticket)
+        {
+            return new TicketValidationResponseModel
+            {
+                IsTicketValid = ticket?.IsActive ?? false,
+                HasError = ticket == null,
+                ErrorMessage = ticket == null ? "The ticket was not found" : "",
+                EventName = ticket?.TicketArea?.Event?.Name ?? "",
+                AreaName = ticket?.TicketArea?.AreaName ?? "",
+                LocationName = ticket?.TicketArea?.Event?.Location?.Name ?? "",
+                EventDate = ticket?.TicketArea?.Event?.Date ?? null
+            };
         }
     }
 }

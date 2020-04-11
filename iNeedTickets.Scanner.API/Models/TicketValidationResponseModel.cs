@@ -8,7 +8,7 @@ namespace iNeedTickets.Scanner.API.Models
 {
     public class TicketValidationResponseModel
     {
-        public bool IsValid { get; set; }
+        public bool IsTicketValid { get; set; }
 
         public bool HasError { get; set; }
 
