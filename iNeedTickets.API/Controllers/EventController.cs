@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace iNeedTickets.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/events")]
     [ApiController]
-    public class EventsController : ControllerBase
+    public class EventController : ControllerBase
     {
         private IEventRepository _eventRepository;
 
-        public EventsController(IEventRepository eventRepository)
+        public EventController(IEventRepository eventRepository)
         {
             _eventRepository = eventRepository;
         }

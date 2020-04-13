@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using iNeedTickets.Models;
 using iNeedTickets.Repos;
+using iNeedTickets.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +32,7 @@ namespace iNeedTickets.API
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:Events:ConnectionString"]));
 
             services.AddTransient<IEventRepository, EFEventRepository>();
+            services.AddTransient<IImageService, ImageService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using iNeedTickets.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,25 +10,25 @@ namespace iNeedTickets.Controllers
 {
     public class ImageController : Controller
     {
-        private IHostingEnvironment _hostingEnvironment;
+        private IImageService _imageService;
 
-        public ImageController(IHostingEnvironment hostingEnvironment)
+        public ImageController(IImageService imageService)
         {
-            _hostingEnvironment = hostingEnvironment;
+            _imageService = imageService;
         }
 
         public IActionResult TicketPhoto(string fileName)
         {
-            var path = _hostingEnvironment.ContentRootPath + "\\Images\\Tickets\\" + fileName;
+            var image = _imageService.GetTicketImage(fileName);
 
-            return base.PhysicalFile(path, "image/jpeg");
+            return File(image, "image/jpeg");
         }
 
         public IActionResult EventPhoto(string fileName)
         {
-            var path = _hostingEnvironment.ContentRootPath + "\\Images\\Events\\" + fileName;
+            var image = _imageService.GetEventImage(fileName);
 
-            return base.PhysicalFile(path, "image/jpeg");
+            return File(image, "image/jpeg");
         }
     }
 }
