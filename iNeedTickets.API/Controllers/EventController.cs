@@ -28,11 +28,19 @@ namespace iNeedTickets.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        public ActionResult GetById(int id)
         {
             var selectedEvent = _eventRepository.GetEventById(id);
 
             return Ok(selectedEvent);
+        }
+
+        [HttpGet("search")]
+        public ActionResult GetByQuery(string query)
+        {
+            var selectedEvents = _eventRepository.GetEventsByQuery(query.ToLower());
+
+            return Ok(selectedEvents);
         }
     }
 }
