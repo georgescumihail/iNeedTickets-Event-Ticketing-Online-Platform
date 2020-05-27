@@ -22,6 +22,15 @@ namespace iNeedTickets.Repos
                 .Include(e => e.Location);
         }
 
+        public IQueryable<Event> GetAllUpcomingEventsSortedByDate()
+        {
+            return dbContext.Events
+                .Where(e => e.Date >= DateTime.Now)
+                .Include(e => e.TicketAreas)
+                .Include(e => e.Location)
+                .OrderBy(e => e.Date);
+        }
+
         public Event GetEventById(int id) {
             return dbContext.Events
                 .Where(e => e.Date >= DateTime.Now)

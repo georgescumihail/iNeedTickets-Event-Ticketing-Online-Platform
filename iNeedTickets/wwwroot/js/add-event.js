@@ -52,7 +52,7 @@ function handleAddResponse(res) {
         window.location.href = "/admin/manager";
     }
     else {
-        errorMessage.innerText = "Invalid input";
+        errorMessage.innerText = "Please complete all the fields!";
         errorMessage.style.visibility = "visible";
     }
 }

@@ -30,7 +30,7 @@ namespace iNeedTickets.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var eventsList = _eventRepository.GetAllUpcomingEvents();
+            var eventsList = _eventRepository.GetAllUpcomingEventsSortedByDate();
 
             return View("ManagerMenu", eventsList.ToList());
         }

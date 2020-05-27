@@ -10,6 +10,8 @@ namespace iNeedTickets.Repos
     {
         IQueryable<Event> GetAllUpcomingEvents();
 
+        IQueryable<Event> GetAllUpcomingEventsSortedByDate();
+
         Event GetEventById(int id);
 
         IQueryable<Event> GetEventsByQuery(string query);

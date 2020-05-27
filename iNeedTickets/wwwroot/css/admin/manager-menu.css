@@ -1,16 +1,23 @@
 ﻿
 #manage-page {
     padding: 20px;
+    margin-bottom: 200px;
 }
 
 .main-text {
-    margin-left: 30px;
+    margin-left: 40px;
+}
+
+#table-search {
+    margin-top: 20px;
+    margin-left: 60px;
+    width: 250px;
 }
 
 #events-table-container {
     height: 400px;
     overflow-y: auto;
-    margin: 30px auto;
+    margin: 20px auto;
     width: 90%;
 }
 

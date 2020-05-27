@@ -12,6 +12,7 @@
 <body>
     <div id="manage-page">
         <h4 class="main-text">Events management</h4>
+        <input type="text" id="table-search" class="form-control" placeholder="Search..."/>
         <div id="events-table-container">
             <table id="events-table" class="table-responsive table-bordered table-striped table-hover">
                 @foreach (var e in Model)
@@ -19,7 +20,7 @@
                     <tr onclick="handleTableClick(@e.Id)" id="@("event-"+e.Id.ToString() )">
                         <td>@e.Name</td>
                         <td>@e.Location.Name</td>
-                        <td>@e.Date</td>
+                        <td>@e.Date.ToString().Substring(0, 14)</td>
                     </tr>
                 }
             </table>
@@ -27,6 +28,13 @@
         <button id="add-button" class="btn btn-primary">Add new event</button>
     </div>
 
+    <script>
+        var eventList = [];
+        @foreach(var e in Model)
+        {
+            <text>eventList.push({ id: @e.Id, name: "@e.Name", location: "@e.Location.Name", date: "@e.Date.ToString()" });</text>
+        }
+    </script>
     <script src="~/js/manager.js"></script>
 </body>
 </html>
