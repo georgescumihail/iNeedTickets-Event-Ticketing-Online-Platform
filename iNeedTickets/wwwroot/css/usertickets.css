@@ -7,17 +7,48 @@
     margin-left: 30px;
 }
 
-#tickets-table {
-    margin: 30px auto;
-    width: 80%;
-}
-
-#tickets-table tbody {
-    width: 100%;
-    display: table;
-}
-
-.ticket-link {
-    display: block;
+#event-list {
     margin: 20px;
+}
+
+.event-item {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ticket-item {
+    margin: 10px;
+}
+
+.ticket-item a {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+    #purchased-tickets-page {
+        padding: 3px;
+    }
+
+    .main-text {
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    #event-list {
+        padding: 20px;
+        margin: 0;
+    }
+
+    .event-item {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .ticket-list {
+        padding: 10px;
+    }
+
+    .ticket-item {
+        margin: 3px;
+    }
 }

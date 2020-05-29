@@ -20,7 +20,7 @@
                     <tr onclick="handleTableClick(@e.Id)" id="@("event-"+e.Id.ToString() )">
                         <td>@e.Name</td>
                         <td>@e.Location.Name</td>
-                        <td>@e.Date.ToString().Substring(0, 14)</td>
+                        <td>@e.Date.ToString("g")</td>
                     </tr>
                 }
             </table>
@@ -32,7 +32,7 @@
         var eventList = [];
         @foreach(var e in Model)
         {
-            <text>eventList.push({ id: @e.Id, name: "@e.Name", location: "@e.Location.Name", date: "@e.Date.ToString()" });</text>
+            <text>eventList.push({ id: @e.Id, name: "@e.Name", location: "@e.Location.Name", date: "@e.Date.ToString("g")" });</text>
         }
     </script>
     <script src="~/js/manager.js"></script>

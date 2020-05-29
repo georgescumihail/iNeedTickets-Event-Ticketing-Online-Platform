@@ -13,23 +13,44 @@
 
     <body>
 
+        @{
+            var eventsList = new List<Event>();
+            @foreach (var ticket in Model)
+            {
+                if (!eventsList.Contains(ticket.TicketArea.Event))
+                {
+                    eventsList.Add(ticket.TicketArea.Event);
+                }
+            }
+
+            var orderedList = eventsList.OrderBy(e => e.Date);
+        }
+
         <div id="purchased-tickets-page">
             @if (Model.ToList().Count > 0)
             {
                 <h4 class="main-text">Your purchased tickets:</h4>
                 <div id="ticket-list-container">
-                    <table id="tickets-table" class="table-responsive table-bordered table-striped table-hover">
-                        @foreach (var ticket in Model)
+                    <ul id="event-list">
+                        @foreach(var e in orderedList)
                         {
-                            <tr>
-                                <td>
-                                    <a class="ticket-link" href="/account/ticket/@ticket.Id">
-                                        @ticket.TicketArea.Event.Name - @ticket.TicketArea.AreaName - @ticket.TicketArea.Event.Date
-                                    </a>
-                                </td>
-                            </tr>
+                            <li>
+                                <div class="event-item">@e.Name - @e.Date - @e.Location.Name </div>
+                                <ul class="ticket-list">
+                                    @foreach (var t in Model)
+                                    {
+                                        if(t.TicketArea.Event.Id == e.Id)
+                                        {
+                                    <li class="ticket-item">
+                                        <a href="ticket/@t.Id">@t.TicketArea.AreaName - @t.TicketArea.Price lei</a>
+                                        (Purchased on @t.PurchaseDate.ToShortDateString())
+                                    </li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
                         }
-                        </table>
+                    </ul>
                 </div>
             }
             else

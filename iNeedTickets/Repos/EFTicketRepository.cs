@@ -22,6 +22,7 @@ namespace iNeedTickets.Repos
                 .Where(t => t.User.Id == userRef)
                 .Include(t => t.TicketArea)
                 .ThenInclude(c => c.Event)
+                .ThenInclude(e => e.Location)
                 .ToList();
         }
 
