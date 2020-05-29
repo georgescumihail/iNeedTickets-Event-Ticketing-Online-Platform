@@ -12,7 +12,20 @@
 <body>
     <div id="edit-event-page">
         <h4 class="main-text">Edit event @Model.Name</h4>
-        <button id="delete-event" class="btn btn-danger">Delete</button>
+
+        <label class="form-label">Event name:</label>
+        <input id="name-field" value="@Model.Name" type="text" class="form-element form-control" />
+
+        <label class="form-label">Description:</label>
+        <textarea id="description-field" class="form-element form-control">@Model.Description</textarea>
+
+        <label class="form-label">Tags:</label>
+        <input id="tags-field" type="text" class="form-element form-control" />
+
+        <div>
+            <button id="submit-button" class="btn btn-primary">Save Changes</button>
+            <button id="delete-button" class="btn btn-danger">Delete Event</button>
+        </div>
     </div>
 
     <script>

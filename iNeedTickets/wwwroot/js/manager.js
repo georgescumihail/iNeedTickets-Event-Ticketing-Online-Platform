@@ -9,7 +9,11 @@ function handleTableClick(id) {
 
 function filterEvents(query) {
     eventsTable.innerHTML = "";
-    var newContent = "";
+    var newContent = `<tr class="table-head">
+        <th> Name</th>
+        <th>Location</th>
+        <th>Date</th>
+        </tr >`;
     filteredList = eventList.filter(e => e.name.toLowerCase().includes(query) || e.location.toLowerCase().includes(query));
     if (filteredList.length > 0) {
         filteredList.forEach(e => {

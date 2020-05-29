@@ -4,5 +4,26 @@ edit-event-page {
 }
 
 .main-text {
-    margin: 20px;
+    margin: 15px;
+}
+
+.form-element {
+    display: block;
+    width: 60%;
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    margin: 10px;
+    margin-left: 20px;
+}
+
+#submit-button {
+    margin: 20px 10px 0 25px;
+}
+
+#delete-button {
+    margin-top: 20px;
 }

@@ -15,6 +15,11 @@
         <input type="text" id="table-search" class="form-control" placeholder="Search..."/>
         <div id="events-table-container">
             <table id="events-table" class="table-responsive table-bordered table-striped table-hover">
+                <tr class="table-head">
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                </tr>
                 @foreach (var e in Model)
                 {
                     <tr onclick="handleTableClick(@e.Id)" id="@("event-"+e.Id.ToString() )">

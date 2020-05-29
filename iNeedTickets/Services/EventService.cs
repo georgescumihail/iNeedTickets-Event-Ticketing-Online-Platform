@@ -71,6 +71,18 @@ namespace iNeedTickets.Services
             }
         }
 
+        public bool EditEvent(EditEventData editData)
+        {
+            var editedEvent = dbContext.Events.FirstOrDefault(e => e.Id == editData.Id);
+
+            editedEvent.Name = editData.Name;
+            editedEvent.Description = editData.Description;
+
+            dbContext.SaveChanges();
+
+            return true;
+        }
+
         public bool RemoveEvent(int id)
         {
             var removedEvent = dbContext.Events.FirstOrDefault(e => e.Id == id);

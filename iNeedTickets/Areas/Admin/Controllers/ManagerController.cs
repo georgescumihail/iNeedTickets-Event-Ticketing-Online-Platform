@@ -79,6 +79,14 @@ namespace iNeedTickets.Areas.Admin.Controllers
             return Json(new { isSuccess });
         }
 
+        [HttpPost]
+        public IActionResult EditEvent([FromBody]EditEventData data)
+        {
+            var isSuccess = _eventService.EditEvent(data);
+
+            return Json(new { isSuccess });
+        }
+
         public IActionResult DeleteEvent(int id)
         {
             var isSuccess = _eventService.RemoveEvent(id);
