@@ -122,5 +122,59 @@ namespace iNeedTickets.Controllers
 
             return View(selectedTicket);
         }
+
+        public IActionResult Settings()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeUsername([FromBody]UsernameChangeModel data)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _userManager.FindByIdAsync(userId);
+
+            user.UserName = data.Username;
+
+            await _userManager.UpdateAsync(user);
+
+            return Json(new { isSuccess = true });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeEmail([FromBody]EmailChangeModel data)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _userManager.FindByIdAsync(userId);
+            bool isSuccess;
+            var email = data.Email;
+
+            if (email != null && email.Length > 0)
+            {
+                user.Email = email;
+                isSuccess = true;
+            }
+            else
+            {
+                isSuccess = false;
+            }
+
+            await _userManager.UpdateAsync(user);
+
+            return Json(new { isSuccess });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword([FromBody]PasswordChangeModel data)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _userManager.FindByIdAsync(userId);
+
+            var result = await _userManager.ChangePasswordAsync(user, data.OldPassword, data.NewPassword);
+
+            await _userManager.UpdateAsync(user);
+
+            return Json(new { isSuccess = result.Succeeded });
+        }
     }
 }

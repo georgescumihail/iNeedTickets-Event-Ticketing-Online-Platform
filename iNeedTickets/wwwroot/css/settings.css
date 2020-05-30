@@ -1,0 +1,44 @@
+﻿#settings-page {
+    padding: 10px;
+    margin-bottom: 100px;
+}
+
+.main-text {
+    margin: 20px;
+}
+
+.settings-item {
+    margin-bottom: 30px;
+    margin-left: 20px;
+}
+
+.settings-button {
+    color: #2FA4E7;
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.settings-button:focus {
+    outline: none;
+}
+
+.collapse-area {
+    width: 60%;
+}
+
+.settings-input {
+    width: 250px;
+    margin: 10px;
+}
+
+.settings-label {
+    margin: 10px 0 0 10px;
+}
+
+.submit-settings {
+    width: 130px;
+    padding: 5px;
+    margin: 10px;
+}

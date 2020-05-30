@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "Settings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/css/settings.css" rel="stylesheet" type="text/css" />
+
+<div id="settings-page">
+    <h2 class="main-text">Account Settings</h2>
+
+    <div class="settings-item">
+        <button class="settings-button"
+                type="button"
+                data-toggle="collapse"
+                data-target="#usernameCollapse"
+                aria-expanded="false"
+                aria-controls="collapseExample">
+            Change your username
+        </button>
+
+        <div class="collapse collapse-area" id="usernameCollapse">
+            <div class="card card-body">
+                <label class="settings-label">New username:</label>
+                <input type="text" id="username-field" class="form-control settings-input" />
+                <button id="submit-username" class="btn btn-primary submit-settings">Save changes</button>
+                <div id="username-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="settings-item">
+        <button class="settings-button"
+                type="button"
+                data-toggle="collapse"
+                data-target="#emailCollapse"
+                aria-expanded="false"
+                aria-controls="collapseExample">
+            Change your email
+        </button>
+
+        <div class="collapse collapse-area" id="emailCollapse">
+            <div class="card card-body">
+                <label class="settings-label">New email:</label>
+                <input type="text" id="email-field" class="form-control settings-input" />
+                <button id="submit-email" class="btn btn-primary submit-settings">Save changes</button>
+                <div id="email-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="settings-item">
+        <button class="settings-button"
+                type="button"
+                data-toggle="collapse"
+                data-target="#passwordCollapse"
+                aria-expanded="false"
+                aria-controls="collapseExample">
+            Change your password
+        </button>
+
+        <div class="collapse collapse-area" id="passwordCollapse">
+            <div class="card card-body">
+                <label class="settings-label">Old password:</label>
+                <input type="password" id="old-password-field" class="form-control settings-input" />
+                <label class="settings-label">New password:</label>
+                <input type="password" id="new-password-field" class="form-control settings-input" />
+                <label class="settings-label">Confirm new password:</label>
+                <input type="password" id="confirm-password-field" class="form-control settings-input" />
+                <button id="submit-password" class="btn btn-primary submit-settings">Save changes</button>
+                <div id="password-message"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/settings.js"></script>
