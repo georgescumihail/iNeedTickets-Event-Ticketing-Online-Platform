@@ -17,6 +17,10 @@ namespace iNeedTickets.Areas.Admin.Models
 
         public int Category { get; set; }
 
+        public string Tags { get; set; }
+
+        public bool IsSeated { get; set; }
+
         public string Description { get; set; }
 
         public IFormFile Image { get; set; }

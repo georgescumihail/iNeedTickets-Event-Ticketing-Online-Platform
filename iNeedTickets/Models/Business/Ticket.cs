@@ -12,6 +12,8 @@ namespace iNeedTickets.Models
 
         public TicketArea TicketArea { get; set; }
 
+        public int? SeatNumber { get; set; }
+
         public string FileName { get; set; }
 
         public bool IsActive { get; set; }

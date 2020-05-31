@@ -7,6 +7,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using iNeedTickets.Areas.Admin.Models;
 using iNeedTickets.Models;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace iNeedTickets.Services
 {
@@ -40,6 +42,8 @@ namespace iNeedTickets.Services
                     Location = eventLocation,
                     EventType = (EventCategory)eventData.Category,
                     Description = eventData.Description,
+                    Tags = eventData.Tags,
+                    IsSeated = eventData.IsSeated,
                     PhotoLink = fileName
                 };
 
@@ -73,23 +77,51 @@ namespace iNeedTickets.Services
 
         public bool EditEvent(EditEventData editData)
         {
-            var editedEvent = dbContext.Events.FirstOrDefault(e => e.Id == editData.Id);
+            var editedEvent = dbContext.Events.Include(e => e.TicketAreas).FirstOrDefault(e => e.Id == editData.Id);
+            var areasList = new List<EditEventTicketArea>();
 
-            editedEvent.Name = editData.Name;
-            editedEvent.Description = editData.Description;
+            try
+            {
+                areasList = JsonConvert.DeserializeObject<List<EditEventTicketArea>>(editData.Areas);
+            }
+            catch { return false; }
 
-            dbContext.SaveChanges();
+            if (IsEventEditDataValid(editData, areasList) && editedEvent != null)
+            {
+                editedEvent.Name = editData.Name;
+                editedEvent.Description = editData.Description;
+                editedEvent.Date = DateTime.Parse(editData.Date);
+                editedEvent.Tags = editData.Tags;
 
-            return true;
+                foreach (var newArea in areasList)
+                {
+                    var oldArea = editedEvent.TicketAreas.First(a => a.Id == newArea.Id);
+
+                    oldArea.AreaName = newArea.Name;
+                    oldArea.Price = newArea.Price;
+                    oldArea.TicketsRemaining += newArea.Capacity - oldArea.TicketsCapacity;
+                    oldArea.TicketsCapacity = newArea.Capacity;
+                }
+
+                dbContext.SaveChanges();
+
+                return true;
+            }
+
+
+            return false;
         }
 
         public bool RemoveEvent(int id)
         {
             var removedEvent = dbContext.Events.FirstOrDefault(e => e.Id == id);
             var removedAreas = dbContext.TicketAreas.Where(a => a.Event.Id == id);
+            var removedTickets = dbContext.Tickets.Where(t => t.TicketArea.Event.Id == id);
 
+            dbContext.Tickets.RemoveRange(removedTickets);
             dbContext.TicketAreas.RemoveRange(removedAreas);
             dbContext.Events.Remove(removedEvent);
+
             var changes = dbContext.SaveChanges();
 
             return changes > 0;
@@ -101,13 +133,32 @@ namespace iNeedTickets.Services
                 && !string.IsNullOrWhiteSpace(eventData.Date)
                 && eventData.Image != null;
 
-            bool areAreasValid = false;
+            bool areAreasValid = true;
 
             foreach (var area in eventData.Areas)
             {
-                if (area.Name != null && area.Price > 0 && area.Capacity > 0)
+                if (area.Name == null && area.Price < 0 && area.Capacity < 0)
                 {
-                    areAreasValid = true;
+                    areAreasValid = false;
+                }
+            }
+
+            return isEventValid && areAreasValid;
+        }
+
+
+        private bool IsEventEditDataValid(EditEventData eventData, List<EditEventTicketArea> ticketAreas)
+        {
+            bool isEventValid = !string.IsNullOrWhiteSpace(eventData.Name)
+                && !string.IsNullOrWhiteSpace(eventData.Date);
+
+            bool areAreasValid = true;
+
+            foreach (var area in ticketAreas)
+            {
+                if (area.Name == null && area.Price < 0 && area.Capacity < 0)
+                {
+                    areAreasValid = false;
                 }
             }
 

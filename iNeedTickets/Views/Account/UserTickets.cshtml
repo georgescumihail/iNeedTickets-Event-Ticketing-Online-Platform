@@ -23,7 +23,8 @@
                 }
             }
 
-            var orderedList = eventsList.OrderBy(e => e.Date);
+            var orderedEventsList = eventsList.OrderBy(e => e.Date);
+            var orderedTicketsList = Model.OrderBy(t => t.SeatNumber);
         }
 
         <div id="purchased-tickets-page">
@@ -32,17 +33,22 @@
                 <h4 class="main-text">Your purchased tickets:</h4>
                 <div id="ticket-list-container">
                     <ul id="event-list">
-                        @foreach(var e in orderedList)
+                        @foreach(var e in orderedEventsList)
                         {
                             <li>
                                 <div class="event-item">@e.Name - @e.Date - @e.Location.Name </div>
                                 <ul class="ticket-list">
-                                    @foreach (var t in Model)
+                                    @foreach (var t in orderedTicketsList)
                                     {
                                         if(t.TicketArea.Event.Id == e.Id)
                                         {
                                     <li class="ticket-item">
-                                        <a href="ticket/@t.Id">@t.TicketArea.AreaName - @t.TicketArea.Price lei</a>
+                                        <a href="ticket/@t.Id">@t.TicketArea.AreaName - @t.TicketArea.Price lei - 
+                                        @if (e.IsSeated)
+                                        {
+                                            <text><span>Seat @t.SeatNumber</span></text>
+                                        }
+                                        </a>
                                         (Purchased on @t.PurchaseDate.ToShortDateString())
                                     </li>
                                         }

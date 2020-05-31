@@ -1,8 +1,10 @@
 ﻿
 namespace iNeedTickets.Areas.Admin.Models
 {
-    public class AddEventTicketArea
+    public class EditEventTicketArea
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public int Price { get; set; }

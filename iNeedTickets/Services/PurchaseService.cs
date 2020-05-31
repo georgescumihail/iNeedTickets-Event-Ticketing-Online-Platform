@@ -30,10 +30,15 @@ namespace iNeedTickets.Services
 
             if (ticketArea != null && ticketArea.TicketsRemaining >= purchaseData.TicketsCount)
             {
-                var ticketList = BuildTicketList(ticketArea, currentUser, purchaseData.TicketsCount);
+                var ticketList = new List<Ticket>();
+
+                for (var i = 0; i < purchaseData.TicketsCount; i++)
+                {
+                    ticketList.Add(BuildTicket(ticketArea, currentUser));
+                    ticketArea.TicketsRemaining--;
+                }
 
                 dbContext.Tickets.AddRange(ticketList);
-                ticketArea.TicketsRemaining -= purchaseData.TicketsCount;
                 dbContext.SaveChanges();
 
                 var paths = GenerateTickets(ticketList);
@@ -45,26 +50,30 @@ namespace iNeedTickets.Services
             return false;
         }
 
-        private List<Ticket> BuildTicketList(TicketArea area, User user, int ticketsNo)
+        private Ticket BuildTicket(TicketArea area, User user)
         {
-            var ticketList = new List<Ticket>();
+            var ticketGuid = Guid.NewGuid();
+            int? seatNr;
 
-            for (var i = 0; i < ticketsNo; i++)
+            if (area.Event.IsSeated)
             {
-                var ticketGuid = Guid.NewGuid();
-
-                ticketList.Add(new Ticket
-                {
-                    TicketArea = area,
-                    User = user,
-                    EncryptionCode = ticketGuid,
-                    FileName = $"ticket-{area.Event.Name}-{ticketGuid}.jpg".Replace(" ", "-"),
-                    IsActive = true,
-                    PurchaseDate = DateTime.Now
-                });
+                seatNr = area.TicketsCapacity - area.TicketsRemaining + 1;
+            }
+            else
+            {
+                seatNr = null;
             }
 
-            return ticketList;
+            return new Ticket
+            {
+                TicketArea = area,
+                User = user,
+                EncryptionCode = ticketGuid,
+                FileName = $"ticket-{area.Event.Name}-{ticketGuid}.jpg".Replace(" ", "-"),
+                IsActive = true,
+                SeatNumber =  seatNr,
+                PurchaseDate = DateTime.Now
+            };
         }
 
         private List<string> GenerateTickets(List<Ticket> ticketList)

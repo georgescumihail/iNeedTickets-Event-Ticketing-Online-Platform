@@ -6,6 +6,8 @@ var dateField = document.getElementById("date-field");
 var locationField = document.getElementById("location-field");
 var categoryField = document.getElementById("category-field");
 var descriptionField = document.getElementById("description-field");
+var tagsField = document.getElementById("tags-field");
+var isSeated = document.getElementById("seated-check");
 var photoField = document.getElementById("photo-field");
 var errorMessage = document.getElementById("error-message");
 
@@ -32,6 +34,8 @@ function submitData() {
     formData.append("location", locationField.options[locationField.selectedIndex].value);
     formData.append("category", categoryField.options[categoryField.selectedIndex].value);
     formData.append("description", descriptionField.value);
+    formData.append("tags", tagsField.value);
+    formData.append("seated", isSeated.checked);
     formData.append("image", photoField.files[0]);
     formData.append("areas", JSON.stringify(areasData));
 

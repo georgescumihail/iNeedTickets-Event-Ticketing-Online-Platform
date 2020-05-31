@@ -1,6 +1,7 @@
 ﻿
-edit-event-page {
-    padding: 30px;
+#edit-event-page {
+    padding: 10px;
+    margin-bottom: 80px;
 }
 
 .main-text {
@@ -26,4 +27,15 @@ edit-event-page {
 
 #delete-button {
     margin-top: 20px;
+}
+
+.type-container {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.area-details {
+    display: inline-block;
+    width: 200px;
+    margin: 5px;
 }

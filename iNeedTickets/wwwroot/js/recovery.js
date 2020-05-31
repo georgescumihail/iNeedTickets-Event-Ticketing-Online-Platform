@@ -3,7 +3,7 @@ document.getElementById("recovery-button")
     .addEventListener("click", () => {
 
         var email = document.getElementById("email-field").value;
-        console.log("aa")
+
         if (email != null && email.length > 0) {
             fetch("/account/recovery", {
                 method: "POST",

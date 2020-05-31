@@ -19,8 +19,30 @@
         <label class="form-label">Description:</label>
         <textarea id="description-field" class="form-element form-control">@Model.Description</textarea>
 
+        <label class="form-label">Date & time:</label>
+        <input id="date-field" type="datetime-local" value="@Model.Date.ToString("o").Substring(0, 16)" class="form-element form-control" />
+
         <label class="form-label">Tags:</label>
-        <input id="tags-field" type="text" class="form-element form-control" />
+        <input id="tags-field"  value="@Model.Tags" type="text" class="form-element form-control" />
+
+        <h4 class="main-text">Ticket areas:</h4>
+        <div id="types-container">
+            @{
+                var iterator = 1;
+            }
+
+            @foreach (var area in Model.TicketAreas)
+            {
+                <div class="type-container">
+                    <span>Area @iterator:</span>
+                    <input type="hidden" value="@area.Id" id="area-id-@iterator" />
+                    <input type="text" value="@area.AreaName" id="area-name-@iterator" class="area-details form-control" placeholder="Name" />
+                    <input type="number" value="@area.Price" id="area-price-@iterator" class="area-details form-control" placeholder="Price" />
+                    <input type="number" value="@area.TicketsCapacity" id="area-capacity-@iterator" class="area-details form-control" placeholder="Capacity" />
+                </div>
+                iterator++;
+            }
+        </div>
 
         <div>
             <button id="submit-button" class="btn btn-primary">Save Changes</button>
@@ -30,6 +52,7 @@
 
     <script>
         var eventId = @Model.Id;
+        var areasCount = @Model.TicketAreas.Count;
     </script>
     <script src="~/js/edit-event.js"></script>
 </body>

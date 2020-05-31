@@ -50,8 +50,8 @@ namespace iNeedTickets.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddEvent([FromForm] string name, string date, int location, int category, 
-                                                 string description, IFormFile image, string areas)
+        public IActionResult AddEvent([FromForm] string name, string date, int location, int category, string description,
+                                                string tags, IFormFile image, string areas, bool seated)
         {
             var isSuccess = true;
             var areasList = new List<AddEventTicketArea>();
@@ -70,6 +70,8 @@ namespace iNeedTickets.Areas.Admin.Controllers
                 Location = location,
                 Category = category,
                 Description = description,
+                Tags = tags,
+                IsSeated = seated,
                 Image = image,
                 Areas = areasList
             };

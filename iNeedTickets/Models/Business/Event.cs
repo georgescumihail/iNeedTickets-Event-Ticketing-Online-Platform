@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 namespace iNeedTickets.Models
 {
     public class Event
@@ -17,6 +18,10 @@ namespace iNeedTickets.Models
         public EventCategory EventType { get; set; }
 
         public string PhotoLink { get; set; }
+
+        public string Tags { get; set; }
+
+        public bool IsSeated { get; set; }
 
         public ICollection<TicketArea> TicketAreas { get; set; }
     }
