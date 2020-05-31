@@ -2,7 +2,7 @@
 
 namespace iNeedTickets.Models
 {
-    public class EmailChangeModel
+    public class EmailModel
     {
         public string Email { get; set; }
     }

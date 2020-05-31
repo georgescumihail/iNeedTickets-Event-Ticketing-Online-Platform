@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Recovery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/css/login.css" rel="stylesheet" type="text/css" />
+
+<div id="login-container">
+    <h4 class="login-title">Password Recovery</h4>
+    <p class="login-text">You will receive an email with a password recovery link:</p>
+    <div class="login-row">
+        <label class="form-label">Email:</label>
+        <input id="email-field" class="form-input form-control" type="text" />
+    </div>
+    <div class="login-row">
+        <button id="recovery-button" class="btn btn-primary">Send Email</button>
+    </div>
+    <div id="display-message"></div>
+    <script src="~/js/recovery.js"></script>
+</div>

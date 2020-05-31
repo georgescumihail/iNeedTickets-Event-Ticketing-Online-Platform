@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
-using System.Drawing;
-using Microsoft.AspNetCore.Hosting;
-using System.IO;
 using iNeedTickets.Repos;
+using iNeedTickets.Services;
+using System.Web;
 
 namespace iNeedTickets.Controllers
 {
@@ -19,16 +18,19 @@ namespace iNeedTickets.Controllers
         private SignInManager<User> _signInManager;
         private ITicketRepository _ticketRepository;
         private RoleManager<IdentityRole> _roleManager;
+        private IEmailService _emailService;
 
         public AccountController(UserManager<User> userManager,
             SignInManager<User> signInManager,
             ITicketRepository ticketRepository,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            IEmailService emailService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _ticketRepository = ticketRepository;
             _roleManager = roleManager;
+            _emailService = emailService;
         }
 
         [AllowAnonymous]
@@ -54,7 +56,7 @@ namespace iNeedTickets.Controllers
                 }
             }
 
-            return Json(new { isSuccess = false, message = "Invalid username or password!" });
+            return Json(new { isSuccess = false, message = "Invalid email or password!" });
         }
 
         [AllowAnonymous]
@@ -94,6 +96,74 @@ namespace iNeedTickets.Controllers
                 result.Errors.ToList().ForEach(e => errorMessage += e.Description + "\n");
                 return Json(new { message = errorMessage });
             }
+        }
+
+        [AllowAnonymous]
+        public IActionResult Recovery()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Recovery([FromBody]EmailModel data)
+        {
+            var user = await _userManager.FindByEmailAsync(data.Email);
+
+            if (user != null)
+            {
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                var siteUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}{HttpContext.Request.PathBase}";
+
+                _emailService.SendRecoveryEmail(user, HttpUtility.UrlEncode(token), siteUrl);
+
+                return Json(new { isSuccess = true });
+            }
+
+            return Json(new { isSuccess = false, message = "Invalid email!" });
+        }
+
+        [AllowAnonymous]
+        public IActionResult Reset(string token, string email)
+        {
+            ViewBag.Token = token;
+            ViewBag.Email = email;
+
+            return View();
+        }
+        
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Reset(string token, string email, string password)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            if (user != null)
+            {
+                var result = await _userManager.ResetPasswordAsync(user, token, password);
+
+                if (result.Succeeded)
+                {
+                    await _signInManager.PasswordSignInAsync(user, password, true, false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.Token = token;
+                    ViewBag.Email = email;
+
+                    var errorMessage = "";
+                    result.Errors.ToList().ForEach(e => errorMessage += e.Description + "\n");
+                    ViewBag.Error = errorMessage;
+
+                    return View();
+                }
+            }
+
+            ViewBag.Error = "Email does not exist";
+
+            return View();
         }
 
         public async Task<IActionResult> Signout()
@@ -142,7 +212,7 @@ namespace iNeedTickets.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ChangeEmail([FromBody]EmailChangeModel data)
+        public async Task<IActionResult> ChangeEmail([FromBody]EmailModel data)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = await _userManager.FindByIdAsync(userId);

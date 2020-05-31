@@ -8,6 +8,8 @@ namespace iNeedTickets.Services
 {
     public interface IEmailService
     {
+        void SendRecoveryEmail(User user, string token, string url);
+
         void SendEmail(User user, TicketArea area, PurchaseModel purchaseData, List<string> files);
     }
 }

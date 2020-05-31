@@ -74,3 +74,5 @@ C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcorea
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Manager\EditEvent.g.cshtml.cs
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\iNeedTickets.csprojAssemblyReference.cache
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Account\Settings.g.cshtml.cs
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Account\Recovery.g.cshtml.cs
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Account\Reset.g.cshtml.cs

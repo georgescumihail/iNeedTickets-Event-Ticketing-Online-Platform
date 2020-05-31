@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Reset";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/css/login.css" rel="stylesheet" type="text/css" />
+
+<div>
+    <div id="login-container">
+        <form asp-controller="account" asp-action="reset" method="post">
+            <div class="login-row">
+                <label>New password:</label>
+                <input type="password" id="new-password" name="password" class="form-input form-control" />
+            </div>
+            <div class="login-row">
+                <label>Confirm password:</label>
+                <input type="password" id="confirm-password" class="form-input form-control" />
+            </div>
+            <input type="hidden" value="@ViewBag.Token" name="token" />
+            <input type="hidden" value="@ViewBag.Email" name="email" />
+            <input type="submit" value="Reset" id="submit-reset" class="btn btn-primary" disabled />
+        </form>
+        <div>@ViewBag.Error</div>
+    </div>
+    <script src="~/js/reset.js"></script>
+</div>

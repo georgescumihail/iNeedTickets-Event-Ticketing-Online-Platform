@@ -19,6 +19,26 @@ namespace iNeedTickets.Services
             _config = config;
         }
 
+        public void SendRecoveryEmail(User user, string token, string url)
+        {
+            var emailMessage = new MailMessage();
+            var credentials = new NetworkCredential(_config.Value.ServiceEmail, _config.Value.ServicePassword);
+
+            emailMessage.To.Add(user.Email);
+            emailMessage.Subject = "iNeedTickets reset password";
+            emailMessage.From = new MailAddress(_config.Value.ServiceEmail);
+            emailMessage.IsBodyHtml = true;
+            emailMessage.Body = $"Please follow this link to reset your password: \n\n {url}/account/reset?token={token}&email={user.Email}";
+
+            var smtp = new SmtpClient("smtp.office365.com");
+            smtp.UseDefaultCredentials = false;
+            smtp.EnableSsl = true;
+            smtp.Credentials = credentials;
+            smtp.Port = 587;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Send(emailMessage);
+        }
+
         public void SendEmail(User user, TicketArea area, PurchaseModel purchaseData, List<string> imagePaths)
         {
             var emailMessage = new MailMessage();
