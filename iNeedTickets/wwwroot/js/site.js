@@ -22,3 +22,19 @@ searchBox.addEventListener("input", () => {
         searchButton.disabled = false;
     }
 });
+
+function savePurchaseDetails(orderId, payerId, payerName, orderDate, paymentAmount, currency){
+    fetch("/purchase/saveDetails", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        credentials: 'include',
+        body: JSON.stringify({
+            orderId,
+            payerId,
+            payerName,
+            orderDate,
+            paymentAmount,
+            currency
+        })
+    });
+}

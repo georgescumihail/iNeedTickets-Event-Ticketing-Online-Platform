@@ -91,7 +91,9 @@ buyButton.addEventListener("click", () => {
 });
 
 document.getElementById("confirm-button")
-    .addEventListener("click", () => {
+    .addEventListener("click", () => handlePurchaseRequest(1)); //credit purchase
+
+function handlePurchaseRequest(paymentType) {
 
         spinner.style.visibility = "visible";
 
@@ -101,12 +103,13 @@ document.getElementById("confirm-button")
             credentials: 'include',
             body: JSON.stringify({
                 ticketTypeId: selectedArea,
-                ticketsCount: selectedTicketsNo
+                ticketsCount: selectedTicketsNo,
+                paymentType: paymentType
             })
         })
             .then(res => res.json())
             .then(res => handlePurchaseResponse(res));
-});
+}
 
 function handlePurchaseResponse(res) {
 
@@ -114,11 +117,13 @@ function handlePurchaseResponse(res) {
 
     if (res.isSuccess) {
         document.getElementById("success-buttons").style.display = "block";
-        document.getElementById("confirm-button").style.display = "none";
+        document.getElementById("payment-area").style.display = "none";
         document.getElementById("purchase-success-message").style.display = "block";
     }
     else {
-        document.getElementById("purchase-error-message").style.display = "block";
+        var error = document.getElementById("purchase-error-message");
+        error.innerText = res.message;
+        error.style.display = "block";
     }
 }
 

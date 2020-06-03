@@ -65,8 +65,11 @@
                 <h4 id="confirm-header" class="main-text">Your purchase details:</h4>
                 <div id="confirm-message"></div><span id="popup-price-tag"></span>
                 <div id="purchase-success-message">Purchase successful!</div>
-                <div id="purchase-error-message">There was a problem in registering your purchase.</div>
-                <button id="confirm-button" class="btn btn-primary">Confirm</button>
+                <div id="purchase-error-message"></div>
+                <div id="payment-area">
+                    <div id="paypal-button-container"></div>
+                    <button id="confirm-button" class="btn btn-primary">Pay with credit</button>
+                </div>
                 <img id="loading-spinner" src="~/img/res/spinner.gif" />
                 <div id="popup-price-total"></div>
                 <div id="success-buttons">
@@ -91,5 +94,38 @@
             }
         </script>
         <script src="~/js/event.js"></script>
+        <script
+            src="https://www.paypal.com/sdk/js?client-id=AdSgimQCMI5XJCVVAh-KQZbX3tdPBAjXxqRehnLSLZ-diKYOpXWzdqeWNWqE2vw-jKaX3T9n0kM08gX-">
+        </script>
+        <script>
+            paypal.Buttons({
+                fundingSource: paypal.FUNDING.PAYPAL,
+                createOrder: function (data, actions) { 
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: totalPrice / 4 // ron to usd aprox
+                            }
+                        }]
+                    });
+                },
+                onApprove: function (data, actions) {
+                    return actions.order.capture().then(function (details) {
+
+                        handlePurchaseRequest(2); //paypal purchase
+
+                        var payerName = details.payer.name.given_name + details.payer.name.surname;
+                        var capture = details.purchase_units[0].payments.captures[0];
+
+                        savePurchaseDetails(details.id,
+                            details.payer.payer_id,
+                            payerName,
+                            capture.create_time,
+                            capture.amount.value,
+                            capture.amount.currency_code);
+                    });
+                }
+            }).render('#paypal-button-container');
+        </script>
     </body>
 </html>

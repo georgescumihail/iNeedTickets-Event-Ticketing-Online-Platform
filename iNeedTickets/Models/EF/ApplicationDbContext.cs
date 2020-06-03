@@ -9,6 +9,7 @@ namespace iNeedTickets.Models
         public DbSet<TicketArea> TicketAreas { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<PaypalTransaction> Transactions { get; set; }
 
         public ApplicationDbContext()
         {

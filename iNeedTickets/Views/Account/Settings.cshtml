@@ -13,6 +13,27 @@
         <button class="settings-button"
                 type="button"
                 data-toggle="collapse"
+                data-target="#creditCollapse"
+                aria-expanded="false"
+                aria-controls="collapseExample">
+            Deposit: @ViewBag.Credit RON
+        </button>
+
+        <div class="collapse collapse-area" id="creditCollapse">
+            <div class="card card-body">
+                <label class="settings-label">Add credit:</label>
+                <input type="text" id="credit-field" class="form-control settings-input" />
+                <div id="paypal-button-container"></div>
+                <img id="loading-spinner" src="~/img/res/spinner.gif" />
+                <div id="deposit-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="settings-item">
+        <button class="settings-button"
+                type="button"
+                data-toggle="collapse"
                 data-target="#usernameCollapse"
                 aria-expanded="false"
                 aria-controls="collapseExample">
@@ -75,3 +96,38 @@
 </div>
 
 <script src="~/js/settings.js"></script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AdSgimQCMI5XJCVVAh-KQZbX3tdPBAjXxqRehnLSLZ-diKYOpXWzdqeWNWqE2vw-jKaX3T9n0kM08gX-">
+</script>
+<script>
+    var creditField = document.getElementById("credit-field");
+
+    paypal.Buttons({
+        fundingSource: paypal.FUNDING.PAYPAL,
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: creditField.value / 4 // ron to usd aprox
+                    }
+                }]
+            });
+        },
+        onApprove: function (data, actions) {
+            return actions.order.capture().then(function (details) {
+
+                var payerName = details.payer.name.given_name + details.payer.name.surname;
+                var capture = details.purchase_units[0].payments.captures[0];
+
+                handleDeposit(capture.amount.value * 4); // usd to ron aprox
+
+                savePurchaseDetails(details.id,
+                    details.payer.payer_id,
+                    payerName,
+                    capture.create_time,
+                    capture.amount.value,
+                    capture.amount.currency_code);
+            });
+        }
+    }).render('#paypal-button-container');
+</script>

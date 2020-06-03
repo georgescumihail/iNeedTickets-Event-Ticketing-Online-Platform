@@ -79,7 +79,8 @@ namespace iNeedTickets.Controllers
             var newUser = new User
             {
                 Email = data.Email,
-                UserName = data.Username
+                UserName = data.Username,
+                Credit = 10000
             };
 
             var result = await _userManager.CreateAsync(newUser, data.Password);
@@ -193,8 +194,13 @@ namespace iNeedTickets.Controllers
             return View(selectedTicket);
         }
 
-        public IActionResult Settings()
+        public async Task<IActionResult> Settings()
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _userManager.FindByIdAsync(userId);
+
+            ViewBag.Credit = user.Credit;
+
             return View();
         }
 
@@ -245,6 +251,19 @@ namespace iNeedTickets.Controllers
             await _userManager.UpdateAsync(user);
 
             return Json(new { isSuccess = result.Succeeded });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Deposit([FromBody] DepositModel data)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _userManager.FindByIdAsync(userId);
+
+            user.Deposit(data.Amount);
+
+            await _userManager.UpdateAsync(user);
+
+            return Json(new { isSuccess = true });
         }
     }
 }

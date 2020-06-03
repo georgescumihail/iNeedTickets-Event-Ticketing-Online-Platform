@@ -42,3 +42,14 @@
     padding: 5px;
     margin: 10px;
 }
+
+#paypal-button-container {
+    width: 250px;
+    margin: 10px;
+}
+
+#loading-spinner {
+    visibility: hidden;
+    height: 30px;
+    width: 30px;
+}

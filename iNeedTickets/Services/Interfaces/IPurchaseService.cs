@@ -4,6 +4,6 @@ namespace iNeedTickets.Services
 {
     public interface IPurchaseService
     {
-        bool RegisterPurchase(PurchaseModel purchaseData, User currentUser);
+        PurchaseResponse RegisterPurchase(PurchaseModel purchaseData, User currentUser);
     }
 }

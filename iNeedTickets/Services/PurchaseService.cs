@@ -24,30 +24,61 @@ namespace iNeedTickets.Services
             _areaRepository = areaRepository;
         }
 
-        public bool RegisterPurchase(PurchaseModel purchaseData, User currentUser)
+        public PurchaseResponse RegisterPurchase(PurchaseModel purchaseData, User currentUser)
         {
             var ticketArea = _areaRepository.GetFullAreaInfoById(purchaseData.TicketTypeId);
 
             if (ticketArea != null && ticketArea.TicketsRemaining >= purchaseData.TicketsCount)
             {
-                var ticketList = new List<Ticket>();
-
-                for (var i = 0; i < purchaseData.TicketsCount; i++)
+                if (purchaseData.PaymentType == PaymentType.Credit)
                 {
-                    ticketList.Add(BuildTicket(ticketArea, currentUser));
-                    ticketArea.TicketsRemaining--;
+                    var totalSum = purchaseData.TicketsCount * ticketArea.Price;
+
+                    if (currentUser.Credit >= totalSum)
+                    {
+                        currentUser.Pay(totalSum);
+
+                        return ProcessPurchase(purchaseData, ticketArea, currentUser);
+                    }
+
+                    return new PurchaseResponse
+                    {
+                        IsSuccess = false,
+                        Message = "You don't have enough credits"
+                    };
                 }
 
-                dbContext.Tickets.AddRange(ticketList);
-                dbContext.SaveChanges();
-
-                var paths = GenerateTickets(ticketList);
-                _emailService.SendEmail(currentUser, ticketArea, purchaseData, paths);
-
-                return true;
+                return ProcessPurchase(purchaseData, ticketArea, currentUser);
             }
 
-            return false;
+            return new PurchaseResponse
+            {
+                IsSuccess = false,
+                Message = "There was an error"
+            };
+        }
+
+        private PurchaseResponse ProcessPurchase(PurchaseModel purchaseData, TicketArea ticketArea, User currentUser)
+        {
+            var ticketList = new List<Ticket>();
+
+            for (var i = 0; i < purchaseData.TicketsCount; i++)
+            {
+                ticketList.Add(BuildTicket(ticketArea, currentUser));
+                ticketArea.TicketsRemaining--;
+            }
+
+            dbContext.Tickets.AddRange(ticketList);
+            dbContext.SaveChanges();
+
+            var paths = GenerateTickets(ticketList);
+            _emailService.SendEmail(currentUser, ticketArea, purchaseData, paths);
+
+            return new PurchaseResponse
+            {
+                IsSuccess = true,
+                Message = "Purchase successful"
+            };
         }
 
         private Ticket BuildTicket(TicketArea area, User user)

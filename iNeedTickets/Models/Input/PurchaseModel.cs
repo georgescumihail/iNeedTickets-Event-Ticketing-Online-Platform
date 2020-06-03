@@ -6,5 +6,7 @@ namespace iNeedTickets.Models
         public int TicketTypeId { get; set; }
 
         public int TicketsCount { get; set; }
+
+        public PaymentType PaymentType { get; set; }
     }
 }

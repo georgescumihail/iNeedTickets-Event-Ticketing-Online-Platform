@@ -1,7 +1,8 @@
-﻿
-var usernameMessage = document.getElementById("username-message");
+﻿var usernameMessage = document.getElementById("username-message");
 var emailMessage = document.getElementById("email-message");
 var passwordMessage = document.getElementById("password-message");
+var depositMessage = document.getElementById("deposit-message");
+var spinner = document.getElementById("loading-spinner");
 
 document.getElementById("submit-username")
     .addEventListener("click", () => {
@@ -68,6 +69,29 @@ document.getElementById("submit-password")
         }
     });
 
+function handleDeposit(amount) {
+
+    spinner.style.visibility = "visible";
+
+    fetch("/account/deposit", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        credentials: 'include',
+        body: JSON.stringify({
+            amount
+        })
+    })
+        .then(res => res.json())
+        .then(res => handleDepositResponse(res));
+}
+
+function handleDepositResponse(res) {
+    if (res.isSuccess) {
+        spinner.style.visibility = "hidden";
+        depositMessage.innerText = "Deposit successful";
+    }
+}
+
 function handleUsernameResponse(res) {
     if (res.isSuccess) {
         usernameMessage.innerText = "User changed successfully";
@@ -94,3 +118,4 @@ function handlePasswordResponse(res) {
         passwordMessage.innerText = "Password change error!";
     }
 }
+

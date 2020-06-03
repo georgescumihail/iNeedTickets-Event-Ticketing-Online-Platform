@@ -15,11 +15,15 @@ namespace iNeedTickets.Controllers
     public class PurchaseController : Controller
     {
         private IPurchaseService _purchaseService;
+        private ITransactionService _transactionService;
         private UserManager<User> _userManager;
 
-        public PurchaseController(IPurchaseService purchaseService, UserManager<User> userManager)
+        public PurchaseController(IPurchaseService purchaseService,
+                                ITransactionService transactionService,
+                                UserManager<User> userManager)
         {
             _purchaseService = purchaseService;
+            _transactionService = transactionService;
             _userManager = userManager;
         }
 
@@ -29,7 +33,17 @@ namespace iNeedTickets.Controllers
             var user = await _userManager.GetUserAsync(HttpContext.User);
             var result = _purchaseService.RegisterPurchase(purchaseData, user);
 
-            return Json(new { isSuccess = result });
+            await _userManager.UpdateAsync(user);
+
+            return Json(new { isSuccess = result.IsSuccess, message = result.Message });
+        }
+
+        [HttpPost]
+        public IActionResult SaveDetails([FromBody] PaypalTransaction transaction)
+        {
+            _transactionService.Save(transaction);
+
+            return Ok();
         }
     }
 }
