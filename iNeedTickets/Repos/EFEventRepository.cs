@@ -9,10 +9,12 @@ namespace iNeedTickets.Repos
     public class EFEventRepository : IEventRepository
     {
         private ApplicationDbContext dbContext;
+        private ITicketRepository _ticketRepository;
 
-        public EFEventRepository(ApplicationDbContext context)
+        public EFEventRepository(ApplicationDbContext context, ITicketRepository ticketRepository)
         {
             dbContext = context;
+            _ticketRepository = ticketRepository;
         }
 
         public IQueryable<Event> GetAllUpcomingEvents() {
@@ -65,6 +67,13 @@ namespace iNeedTickets.Repos
                 .Include(e => e.Location)
                 .OrderBy(e => e.Date)
                 .Take(selectionSize);
+        }
+
+        public IQueryable<Event> GetEventsByUser(string userId)
+        {
+            var userTickets = _ticketRepository.GetTicketListByUser(userId);
+
+            return userTickets.Select(t => t.TicketArea.Event).AsQueryable();
         }
     }
 }

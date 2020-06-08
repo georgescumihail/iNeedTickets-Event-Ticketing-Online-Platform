@@ -53,6 +53,7 @@ namespace iNeedTickets
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<ITransactionService, TransactionService>();
+            services.AddTransient<ITagRecommendationService, TagRecommendationService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

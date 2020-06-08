@@ -19,5 +19,7 @@ namespace iNeedTickets.Repos
         IQueryable<Event> GetEventsByType(EventCategory eventType, int selectionSize = 8);
 
         IQueryable<Event> GetClosestUpcomingEvents(int selectionSize);
+
+        IQueryable<Event> GetEventsByUser(string userId);
     }
 }
