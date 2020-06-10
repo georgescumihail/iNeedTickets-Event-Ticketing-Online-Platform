@@ -16,7 +16,7 @@ namespace iNeedTickets.Services
             _eventRepository = eventRepository;
         }
 
-        public IEnumerable<Event> GetRecommendedEvents(string userId)
+        public IEnumerable<Event> GetRecommendedEvents(string userId, int size)
         {
             var userEvents = _eventRepository.GetEventsByUser(userId);
 
@@ -64,9 +64,7 @@ namespace iNeedTickets.Services
                 }
             }
 
-            var sortedList = eventScore.ToList().OrderByDescending(e => e.Value).Select(e => e.Key).ToList();
-
-            return sortedList.Take(8);
+            return eventScore.ToList().OrderByDescending(e => e.Value).Select(e => e.Key).ToList().Take(size);
         }
     }
 }

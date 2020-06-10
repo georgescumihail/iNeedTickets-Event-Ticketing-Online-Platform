@@ -1,0 +1,9 @@
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.ML\bin\Debug\netcoreapp2.2\iNeedTickets.ML.deps.json
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.ML\bin\Debug\netcoreapp2.2\iNeedTickets.ML.dll
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.ML\bin\Debug\netcoreapp2.2\iNeedTickets.ML.pdb
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.ML\obj\Debug\netcoreapp2.2\iNeedTickets.ML.csprojAssemblyReference.cache
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.ML\obj\Debug\netcoreapp2.2\iNeedTickets.ML.csproj.CoreCompileInputs.cache
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.ML\obj\Debug\netcoreapp2.2\iNeedTickets.ML.AssemblyInfoInputs.cache
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.ML\obj\Debug\netcoreapp2.2\iNeedTickets.ML.AssemblyInfo.cs
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.ML\obj\Debug\netcoreapp2.2\iNeedTickets.ML.dll
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.ML\obj\Debug\netcoreapp2.2\iNeedTickets.ML.pdb

@@ -75,5 +75,16 @@ namespace iNeedTickets.Repos
 
             return userTickets.Select(t => t.TicketArea.Event).AsQueryable();
         }
+
+        public int GetLastEventByUser(string userId)
+        {
+            var lastTicket = dbContext.Tickets
+                .Include(t => t.TicketArea)
+                .ThenInclude(a => a.Event)
+                .OrderByDescending(t => t.PurchaseDate)
+                .FirstOrDefault();
+
+            return lastTicket.TicketArea.Event.Id;
+        }
     }
 }

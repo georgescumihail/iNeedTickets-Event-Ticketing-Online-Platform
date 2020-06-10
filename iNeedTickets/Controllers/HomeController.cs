@@ -8,6 +8,7 @@ using iNeedTickets.Models;
 using iNeedTickets.Repos;
 using System.Security.Claims;
 using iNeedTickets.Services;
+using iNeedTickets.ML;
 
 namespace iNeedTickets.Controllers
 {
@@ -15,7 +16,7 @@ namespace iNeedTickets.Controllers
     {
         private IEventRepository _eventsRepository;
         private ITagRecommendationService _tagRecommendationService;
-        private const int UPCOMING_SIZE = 8;
+        private const int ROW_SIZE = 4;
 
         public HomeController(IEventRepository eventsRepository, ITagRecommendationService tagRecommendationService)
         {
@@ -27,12 +28,25 @@ namespace iNeedTickets.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
+            var lastEventId = _eventsRepository.GetLastEventByUser(userId);
+            var availableEventIds = _eventsRepository.GetAllUpcomingEvents().Select(e => e.Id);
+
+            var recommendedEvents = _tagRecommendationService.GetRecommendedEvents(userId, ROW_SIZE).ToList();
+
+            var mlService = new MachineLearningRecommendationService();
+            var mlPrediction = mlService.CreatePrediction(lastEventId, availableEventIds, ROW_SIZE);
+
+            foreach(var p in mlPrediction)
+            {
+                recommendedEvents.Add(_eventsRepository.GetEventById(p.EventId));
+            }
+
             return View(new MainPageModel
             {
-                UpcomingEvents = _eventsRepository.GetClosestUpcomingEvents(UPCOMING_SIZE).ToList(),
+                UpcomingEvents = _eventsRepository.GetClosestUpcomingEvents(ROW_SIZE * 2).ToList(),
                 ConcertEvents = _eventsRepository.GetEventsByType(EventCategory.Concerts).ToList(),
                 TheatreEvents = _eventsRepository.GetEventsByType(EventCategory.Theatre).ToList(),
-                RecommendedEvents = _tagRecommendationService.GetRecommendedEvents(userId).ToList()
+                RecommendedEvents = recommendedEvents
             });
         }
 

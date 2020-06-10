@@ -5,6 +5,6 @@ namespace iNeedTickets.Services
 {
     public interface ITagRecommendationService
     {
-        IEnumerable<Event> GetRecommendedEvents(string userId);
+        IEnumerable<Event> GetRecommendedEvents(string userId, int size);
     }
 }

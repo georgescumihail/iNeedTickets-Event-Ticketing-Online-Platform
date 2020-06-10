@@ -36,4 +36,9 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\iNeedTickets.ML\iNeedTickets.ML.csproj" />
+  </ItemGroup>
+
 </Project>

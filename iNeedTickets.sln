@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNeedTickets.API", "iNeedTi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iNeedTickets.Scanner.API", "iNeedTickets.Scanner.API\iNeedTickets.Scanner.API.csproj", "{24A4AE51-15D7-4BEA-92CD-B400BFE5E0A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iNeedTickets.ML", "iNeedTickets.ML\iNeedTickets.ML.csproj", "{4DDAABEC-D7A8-4192-B95D-60C716C8D630}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{24A4AE51-15D7-4BEA-92CD-B400BFE5E0A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24A4AE51-15D7-4BEA-92CD-B400BFE5E0A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24A4AE51-15D7-4BEA-92CD-B400BFE5E0A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DDAABEC-D7A8-4192-B95D-60C716C8D630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DDAABEC-D7A8-4192-B95D-60C716C8D630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DDAABEC-D7A8-4192-B95D-60C716C8D630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DDAABEC-D7A8-4192-B95D-60C716C8D630}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -76,3 +76,5 @@ C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcorea
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Account\Settings.g.cshtml.cs
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Account\Recovery.g.cshtml.cs
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\obj\Debug\netcoreapp2.2\Razor\Views\Account\Reset.g.cshtml.cs
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\bin\Debug\netcoreapp2.2\iNeedTickets.ML.dll
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets\bin\Debug\netcoreapp2.2\iNeedTickets.ML.pdb
