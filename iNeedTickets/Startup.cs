@@ -14,6 +14,7 @@ using iNeedTickets.Models;
 using Microsoft.AspNetCore.Identity;
 using iNeedTickets.Services;
 using iNeedTickets.Repos;
+using iNeedTickets.ML;
 
 namespace iNeedTickets
 {
@@ -54,6 +55,7 @@ namespace iNeedTickets
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<ITransactionService, TransactionService>();
             services.AddTransient<ITagRecommendationService, TagRecommendationService>();
+            services.AddSingleton<IMachineLearningRecommendationService, MachineLearningRecommendationService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

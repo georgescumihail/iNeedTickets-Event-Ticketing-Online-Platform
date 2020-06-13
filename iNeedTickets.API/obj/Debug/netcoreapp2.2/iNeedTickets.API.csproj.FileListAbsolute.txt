@@ -17,3 +17,5 @@ C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API\obj\Debug\netc
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API\obj\Debug\netcoreapp2.2\iNeedTickets.API.csproj.CopyComplete
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API\obj\Debug\netcoreapp2.2\iNeedTickets.API.dll
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API\obj\Debug\netcoreapp2.2\iNeedTickets.API.pdb
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API\bin\Debug\netcoreapp2.2\iNeedTickets.ML.dll
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.API\bin\Debug\netcoreapp2.2\iNeedTickets.ML.pdb

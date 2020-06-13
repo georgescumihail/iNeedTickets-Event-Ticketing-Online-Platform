@@ -17,3 +17,5 @@ C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.Scanner.API\obj\De
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.Scanner.API\obj\Debug\netcoreapp2.2\iNeedTickets.Scanner.API.csproj.CopyComplete
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.Scanner.API\obj\Debug\netcoreapp2.2\iNeedTickets.Scanner.API.dll
 C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.Scanner.API\obj\Debug\netcoreapp2.2\iNeedTickets.Scanner.API.pdb
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.Scanner.API\bin\Debug\netcoreapp2.2\iNeedTickets.ML.dll
+C:\Users\Mihail\Documents\Git Repos\iNeedTickets\iNeedTickets.Scanner.API\bin\Debug\netcoreapp2.2\iNeedTickets.ML.pdb

@@ -16,12 +16,16 @@ namespace iNeedTickets.Controllers
     {
         private IEventRepository _eventsRepository;
         private ITagRecommendationService _tagRecommendationService;
+        private IMachineLearningRecommendationService _mlService;
         private const int ROW_SIZE = 4;
 
-        public HomeController(IEventRepository eventsRepository, ITagRecommendationService tagRecommendationService)
+        public HomeController(IEventRepository eventsRepository, 
+            ITagRecommendationService tagRecommendationService, 
+            IMachineLearningRecommendationService mlService)
         {
             _eventsRepository = eventsRepository;
             _tagRecommendationService = tagRecommendationService;
+            _mlService = mlService;
         }
 
         public IActionResult Index()
@@ -33,8 +37,7 @@ namespace iNeedTickets.Controllers
 
             var recommendedEvents = _tagRecommendationService.GetRecommendedEvents(userId, ROW_SIZE).ToList();
 
-            var mlService = new MachineLearningRecommendationService();
-            var mlPrediction = mlService.CreatePrediction(lastEventId, availableEventIds, ROW_SIZE);
+            var mlPrediction = _mlService.CreatePrediction(lastEventId, availableEventIds, ROW_SIZE);
 
             foreach(var p in mlPrediction)
             {
